@@ -1,0 +1,246 @@
+\documentclass[12pt]{article}
+
+\input{setup}
+% \addbibresource{lipids}
+\begin{document}
+
+\begin{titlepage}
+\title{Long-term and recent trends in serum cholesterol awareness, treatment, and control in 12 high-income countries: an analysis of 90 nationally representative surveys\thanks{abc}}
+\author{NCD Risk Factor Collaboration (NCD-RisC) 
+    \thanks{Christopher B. Boyer (Harvard TH Chan School of Public Health, Boston, MA, USA); Bin Zhou (Imperial College London, London, UK); Goodarz Danaei (Harvard TH Chan School of Public Health, Boston, MA, USA); \ldots}}
+\date{\today}
+\maketitle
+\begin{abstract}
+\noindent Placeholder\\
+\vspace{0in}\\
+\noindent\textbf{Keywords:} key1, key2, key3\\
+
+\bigskip
+\end{abstract}
+\setcounter{page}{0}
+\thispagestyle{empty}
+\end{titlepage}
+\pagebreak \newpage
+
+
+
+
+\doublespacing
+
+
+\section{Introduction} \label{sec:introduction}
+
+\section{Methods} \label{sec:methods}
+
+\section{Results} \label{sec:result}
+
+\section{Discussion} \label{sec:discussion}
+
+\section{Conclusion} \label{sec:conclusion}
+
+
+
+\singlespacing
+
+
+
+\clearpage
+
+\onehalfspacing
+
+\section*{Tables} \label{sec:tab}
+\addcontentsline{toc}{section}{Tables}
+
+
+
+\clearpage
+
+\section*{Figures} \label{sec:fig}
+\addcontentsline{toc}{section}{Figures}
+
+%\begin{figure}[hp]
+%  \centering
+%  \includegraphics[width=.6\textwidth]{../fig/placeholder.pdf}
+%  \caption{Placeholder}
+%  \label{fig:placeholder}
+%\end{figure}
+
+
+\clearpage
+\setlength\bibsep{0pt}
+\bibliographystyle{unsrt}
+\bibliography{lipids}
+
+\begin{appendix}
+    \renewcommand{\thefigure}{A\arabic{figure}}
+    \setcounter{figure}{0}
+    
+    \renewcommand{\thetable}{A\arabic{table}}
+    \setcounter{table}{0}
+    
+%    \appendixwithtoc
+    \newpage
+    
+    \section{Appendix} \label{sec:appendixa}
+    \renewcommand{\thesection}{\Alph{section}}
+
+    \subsection{Data sources}
+    Using the NCDRisC database, we assembled data from 90 national health examination surveys completed between 1976 and 2018 in 12 high and middle-income countries: Australia, Chile, Costa Rica, Czech Republic, Germany, Italy, Poland, Romania, South Korea, Spain, United Kingdom, United States of America. These surveys included a lipid panel for a random sample of the general population. A list of surveys used and information about their design, including the age range and number of participants, whether LDL-C was calculated, and the devices used, is included in Table \ref{tab:data_sources}.
+    
+    \begin{landscape}
+    \begin{singlespace}
+        \input{../2_tables/data_sources.tex}
+        \label{tab:data_sources}
+    \end{singlespace}
+    \end{landscape}
+
+    \subsection{Data cleaning}
+    Given the heterogeneity in the data collection and cleaning across surveys, we implemented a secondary data cleaning protocol and applied to the pooled data from all 90 surveys. The basic steps were as follows, we evaluated:
+    \begin{enumerate}
+        \item univariate plausibility ranges
+        \item multivariate plausibility constraints
+        \item multivariate outlier detection
+    \end{enumerate}
+
+    \subsubsection{Univariate plausibility ranges}
+    We removed values for certain laboratory and examination measurements that were outside the range of biological plausibility, as determined by expert consensus. Table \ref{tab:plausibility} below shows the plausiblity ranges used for each variable as well as the number and fraction of values removed.
+
+    \begin{table}[h]
+        \centering
+        \caption{Univariate plausibility ranges for select variables from national surveys.}
+        \begin{tabular}{lcc}
+            \hline
+            Variable & Ages & Plausibility range \\
+            \hline
+            height (cm) & 5 to 9 years & 60 - 180 \\
+            height (cm) & 10 to 14 years & 80 - 200 \\
+            height (cm) & $\geq$15 years & 100 - 250 \\
+            weight (kg) & 5 to 9 years & 5 - 90 \\
+            weight (kg) & 10 to 14 years & 8 - 150 \\
+            weight (kg) & $\geq$15 years & 12 - 300 \\
+            BMI (kg/m$^2$) & 5 to 9 years & 6 - 40 \\
+            BMI (kg/m$^2$) & 10 to 14 years & 8 - 60 \\
+            BMI (kg/m$^2$) & $\geq$15 years & 10 - 80 \\
+            SBP (mmHg) & all & 70 - 270 \\
+            DBP (mmHg) & all & 30 - 150 \\
+            TC (mmol/L) & all & 1.75 - 20 \\
+            LDL (mmol/L) & all & 0.5 - 10 \\
+            HDL (mmol/L) & all & 0.4 - 5 \\
+            Triglycerides (mmol/L) & all & 0.2-20 \\
+            \hline
+        \end{tabular}
+        \label{tab:plausibility}
+    \end{table}
+
+    \subsubsection{Multivariate plausibility constraints}
+    The following constraints are applied after removing data outside the plausibility ranges listed above:
+    \begin{itemize}
+        \item SBP $>$ DBP (before calculating average BP) 
+        \item TC $>$ LDL 
+        \item TC $>$ HDL
+        \item TC – (LDL + HDL) $\geq$ margin of error
+    \end{itemize}
+
+* “margin of error” is determined by using the Cholesterol Reference Method Laboratory Network permitted measurement error limits for TC (8.9\%), HDL (13\%) and LDL (12\%) as follows:
+-	Calculate errors in worst case scenario, i.e., TC underestimated, and HDL/LDL overestimated, each by the largest error permitted.
+-	The limit of errors by quartiles of TC using US NHANES data
+
+    \subsubsection{Multivariate outlier detection}
+
+    For each pair listed above:
+-	Compute the Mahalanobis of distance of all the data points after normalisation.
+-	Exclude points with distance larger than 40.08, which is the quantile of chi2 distribution equivalent to 6SD for normal distribution.
+
+Note: The same cut-off is applied to all pairs. This cut-off may change when applying the procedure to the whole NCD-RisC database.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{../3_figures/mahalanobis.png}
+    \caption{Pairwise outliers based on Mahalanobis distance}
+    \label{fig:pairs}
+\end{figure}
+
+
+    \subsection{Cholesterol Treatment Guidelines}
+
+    We compiled a list of cholesterol treatment guidelines from official sources that have been published and discussed in the academic literature. Most of these come from a review conducted by the World Heart Foundation in 2019. They will be used, possibly, as criteria for determining who should be on treatment in assembled surveys. Note that many of these same sources have guidance about control as well (i.e. ideal reductions in LDL or absolute level attained while on treatment). Table \ref{tab:guidelines} below summarizes the specific treatment guidance from the US, Europe, the UK, Canada, China, Brazil, South Africa, and the WHO. 
+
+    \begin{table}[H]
+        \centering
+        \tiny{
+        \begin{threeparttable}
+        \begin{tabular}{llll}
+            \toprule
+            Source & Year & Treatment recommendation & Goal of therapy\\
+            \midrule  
+            %  \hline
+            NHLBI NCEP ATP III \cite{noauthor_third_2002} & 2013 & LDL $\geq 100$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 20\%  & LDL $<$ 100 mg/dL \\
+            & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 10\% (2+ risk factors) & LDL $<$ 130 mg/dL  \\
+            & & LDL $\geq 160$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $<$ 10\% (2+ risk factors) & LDL $<$ 130 mg/dL  \\
+            & & LDL $\geq 190$ mg/dL (0-1 risk factors) & LDL $<$ 160 mg/dL \\
+            & & & \\
+            %  \hline
+            AHA/ACC Statement \cite{grundy_scott_m_2018_2019} & 2018 & LDL $\geq 190$ mg/dL (severe hypercholesterolemia) & LDL $<$ 100 mg/dL \\
+            & & LDL $\geq 70$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 7.5\%  & LDL reduced 30\% to 49\%\\
+            & & LDL $\geq 70$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 20\% & LDL reduced $\geq$ 50\%\\
+            & & LDL $\geq 70$ mg/dL and diabetes mellitus & LDL reduced $\geq$ 50\% \\
+            & & & \\
+            ESC/EAS Guidelines \cite{mach_2019_2020} & 2019 & LDL $\geq 70$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt} $\geq$ 10\% (very-high) & LDL reduced $\geq$ 50\% or $<$ 55 mg/dL \\
+            & & LDL $\geq 100$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt}  $\geq$ 5\% (high) & LDL reduced $\geq$ 50\% or $<$ 70 mg/dL \\
+            & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt}  $\geq$ 1\% (moderate) & LDL $<$ 100 mg/dL \\
+            & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt} $<$ 1\% (low) & LDL $<$ 116 mg/dL \\
+            & & & \\
+            NICE Guidelines \cite{rabar_lipid_2014} & 2014 & 10-year risk\tnote{\ddag} \hspace{1pt} $\geq$ 10\% or CKD &  \\
+            & & diabetes mellitus (type-2) and 10-year risk\tnote{\ddag} \hspace{1pt} $\geq$ 10\% &  \\
+            & & diabetes mellitus (type-1), $>$40 years-old, duration $>$10 years &  \\
+            & & & \\
+            CCS Guidelines \cite{anderson_2012_2013} & 2012 & LDL $\geq 75$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 20\% & LDL $<$ 75 mg/dL \\
+            & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 10\% & LDL $<$ 130 mg/dL \\
+            & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 5\% (optional) & LDL $<$ 190 mg/dL \\
+            & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt} $<$ 1\% & LDL $<$ 190 mg/dL \\
+            & & & \\
+            China Guidelines \cite{anderson_2012_2013} & 2016 & 10-year risk\tnote{$||$} \hspace{1pt} $\geq$ 10\% & LDL $<$ 130 mg/dL \\
+            & & 10-year risk\tnote{$||$} \hspace{1pt} $\geq$ 5\% & LDL $<$ 130 mg/dL \\
+            & & diabetes mellitus and LDL $\geq 70$ mg/dL or TC $\geq 120$ & LDL $<$ 100 mg/dL \\
+            & & LDL $\geq 190$ mg/dL or TC $\geq 280$ & LDL $<$ 100 mg/dL \\
+            & & & \\
+            Brazil Guidelines \cite{anderson_2012_2013} & 2013 & 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 10\% (women) $\geq$ 20\% (men) & LDL $<$ 100 mg/dL \\
+            & & diabetes mellitus or CKD or FH & LDL $<$ 70 mg/dL \\
+            & & & \\
+            South Africa Guidelines \cite{anderson_2012_2013} & 2012 & 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 30\% (very high) & LDL $<$ 70 mg/dL \\
+            & & LDL $\geq 100$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 15\% (high) & LDL $<$ 100 mg/dL \\
+            & & diabetes mellitus or CKD or FH & LDL $<$ 70 mg/dL \\
+            & & & \\
+            WHO Guidelines \cite{anderson_2012_2013} & 2007 & TC $\geq$ 320 mg/dL or LDL $\geq$ 240 mg/dL or TC/HDL ratio $>$ 8 & LDL $<$ 77 mg/dL or TC $<$ 152 mg/dL \\
+            & & diabetes mellitus & LDL $<$ 77 mg/dL or TC $<$ 152 mg/d  \\
+            & & 10-year risk\tnote{\P} \hspace{1pt} $\geq$ 30\% & LDL $<$ 77 mg/dL or TC $<$ 152 mg/dL \\
+            & & LDL $\geq 115$ mg/dL or TC $\geq 193$ mg/dL and 10-year risk\tnote{\P} \hspace{1pt}  $\geq$ 20\% & LDL $<$ 100 mg/dL \\
+            \bottomrule
+        \end{tabular}
+        \begin{tablenotes}
+            \item[*] Based on Pooled Cohort Equations
+            \item[\textdagger] Based on SCORE
+            \item[\ddag] Based on QRISK2
+            \item[\S] Based on Framingham Risk Score
+            \item[$||$] Based on CMCS re-callibration
+            \item[\P] Based on WHO/ISH risk charts
+        \end{tablenotes}
+        \end{threeparttable}
+        }
+        \caption{Cholesterol treatment guidelines and recommendations for primary prevention.}
+        \label{tab:guidelines}
+    \end{table}
+
+    \subsection{Variable definitions}
+
+    \subsection{Additional results}
+    
+    \subsection{Sensitivity analyses}
+
+    %\printbibliography
+    %\bibliography{Placeholder}
+\end{appendix}
+
+%\printbibliography
+
+\end{document}
