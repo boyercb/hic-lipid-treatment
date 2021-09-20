@@ -28,4 +28,14 @@ source("1_code/7_plots.R")
 
 # Appendix ----------------------------------------------------------------
 
-source("1_code/X_data_sources.R")
+source("1_code/X1_data_sources.R")
+
+source("1_code/X2_calibration.R")
+
+source("1_code/X3_outliers.R")
+
+source("1_code/X4_sensitivity.R")
+
+source("1_code/X5_linear_trends.R")
+
+source("1_code/X6_country_by_country.R")
