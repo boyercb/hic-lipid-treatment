@@ -114,10 +114,13 @@ g <- create_graph(ndf,
 
 g
 
-#Not run: but to run this in R Studio, uncomment below
 render_graph(g, layout = "neato")
 
-#export_graph(g, file_name = "STROBE.png")
+export_graph(graph = g,
+             file_type = "pdf",
+             file_name = "3_figures/figS_STROBE.pdf",
+             width = 5,
+             height = 8)
 
 
 
