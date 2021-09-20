@@ -22,7 +22,7 @@
 \end{titlepage}
 \pagebreak \newpage
 
-
+    
 
 
 \doublespacing
@@ -58,13 +58,26 @@
 \section*{Figures} \label{sec:fig}
 \addcontentsline{toc}{section}{Figures}
 
-%\begin{figure}[hp]
-%  \centering
-%  \includegraphics[width=.6\textwidth]{../fig/placeholder.pdf}
-%  \caption{Placeholder}
-%  \label{fig:placeholder}
-%\end{figure}
+\begin{figure}[hp]
+ \centering
+ \includegraphics[width=\textwidth]{../3_figures/fig1_mean_chol.pdf}
+ \caption{Trends in mean non-HDL serum cholesterol level, by country, sex, and age group.}
+ \label{fig:mean_chol}
+\end{figure}
 
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/fig2_elevated.pdf}
+    \caption{Trends in elevated serum cholesterol, by country, sex, and age group.}
+    \label{fig:elevated}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/fig3_treated.pdf}
+    \caption{Trends in treatment among people with elevated serum cholesterol, by country, sex, and age group.}
+    \label{fig:treated}
+\end{figure}
 
 \clearpage
 \setlength\bibsep{0pt}
@@ -231,11 +244,118 @@ Note: The same cut-off is applied to all pairs. This cut-off may change when app
         \label{tab:guidelines}
     \end{table}
 
-    \subsection{Variable definitions}
+    \subsection{Calibrating Non-HDL-C to LDL-C}
 
-    \subsection{Additional results}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/figS1_calibration.pdf}
+    \caption{Placeholder}
+    \label{fig:placeholder}
+    \end{figure}
+    
+    \subsection{Variable definitions}
     
     \subsection{Sensitivity analyses}
+
+    \subsection{Linear trends}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../3_figures/figS_mean_chol_trends.pdf}
+        \caption{Linear trends in mean Non-HDL serum cholesterol level by country, age, and sex.}
+        \label{fig:trends}
+    \end{figure}
+
+
+    \subsection{Country-by-country results}
+
+    \begin{landscape}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_australia.pdf}
+            \caption{Australia}
+            \label{fig:australia}
+        \end{figure}
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_chile.pdf}
+            \caption{Chile}
+            \label{fig:chile}
+        \end{figure}
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_costa rica.pdf}
+            \caption{Costa Rica}
+            \label{fig:costa_rica}
+        \end{figure}
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_czechia.pdf}
+            \caption{Czechia}
+            \label{fig:czechia}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_germany.pdf}
+            \caption{Germany}
+            \label{fig:germany}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_italy.pdf}
+            \caption{Italy}
+            \label{fig:italy}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_poland.pdf}
+            \caption{Poland}
+            \label{fig:poland}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_romania.pdf}
+            \caption{Romania}
+            \label{fig:romania}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_south korea.pdf}
+            \caption{South Korea}
+            \label{fig:korea}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_spain.pdf}
+            \caption{Spain}
+            \label{fig:spain}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_united kingdom.pdf}
+            \caption{United Kingdom}
+            \label{fig:uk}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_united states of america.pdf}
+            \caption{United States of America}
+            \label{fig:usa}
+        \end{figure}
+    \end{landscape}
+
 
     %\printbibliography
     %\bibliography{Placeholder}
