@@ -37,3 +37,23 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Mac files
+.DS_Store
+
+# latex files
+4_manuscripts/main.aux
+4_manuscripts/main.bbl
+4_manuscripts/main.bcf
+4_manuscripts/main.blg
+4_manuscripts/main.fdb_latexmk
+4_manuscripts/main.fls
+4_manuscripts/main.log
+4_manuscripts/main.out
+4_manuscripts/main.pdf
+4_manuscripts/main.ptc
+4_manuscripts/main.synctex.gz
+4_manuscripts/main.bbl
+4_manuscripts/main.run.xml
+4_manuscripts/main.lot
+4_manuscripts/main.toc
