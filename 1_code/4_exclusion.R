@@ -118,9 +118,7 @@ render_graph(g, layout = "neato")
 
 export_graph(graph = g,
              file_type = "pdf",
-             file_name = "3_figures/figS_STROBE.pdf",
-             width = 5,
-             height = 8)
+             file_name = "3_figures/figS_STROBE.pdf")
 
 
 
