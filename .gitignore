@@ -41,6 +41,12 @@ vignettes/*.pdf
 # Mac files
 .DS_Store
 
+# Globorisk files
+globorisk/
+
+# proprietary data files
+0_data/Selected studies with TC and HDL or LDL and treatment.RDS
+
 # latex files
 4_manuscripts/main.aux
 4_manuscripts/main.bbl
