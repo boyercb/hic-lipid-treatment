@@ -191,6 +191,9 @@ lm_eqn <- function(df) {
   as.character(as.expression(eq));
 }
 
+
+source("1_code/globorisk/globorisk.R")
+
 # facet_rep_grid <- function (..., repeat.tick.labels = FALSE) {
 #   f <- ggplot2::facet_grid(...)
 #   rtl <- reduce.ticks.labels.settings(repeat.tick.labels)

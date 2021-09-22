@@ -63,3 +63,5 @@ globorisk/
 4_manuscripts/main.run.xml
 4_manuscripts/main.lot
 4_manuscripts/main.toc
+.Rproj.user
+.Rdata

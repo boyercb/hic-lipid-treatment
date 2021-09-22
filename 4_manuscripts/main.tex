@@ -149,7 +149,7 @@
             TC (mmol/L) & all & 1.75 - 20 \\
             LDL (mmol/L) & all & 0.5 - 10 \\
             HDL (mmol/L) & all & 0.4 - 5 \\
-            Triglycerides (mmol/L) & all & 0.2-20 \\
+            Triglycerides (mmol/L) & all & 0.2 - 20 \\
             \hline
         \end{tabular}
         \label{tab:plausibility}
@@ -186,9 +186,10 @@ Note: The same cut-off is applied to all pairs. This cut-off may change when app
     \subsection{Cholesterol Treatment Guidelines}
 
     We compiled a list of cholesterol treatment guidelines from official sources that have been published and discussed in the academic literature. Most of these come from a review conducted by the World Heart Foundation in 2019. They will be used, possibly, as criteria for determining who should be on treatment in assembled surveys. Note that many of these same sources have guidance about control as well (i.e. ideal reductions in LDL or absolute level attained while on treatment). Table \ref{tab:guidelines} below summarizes the specific treatment guidance from the US, Europe, the UK, Canada, China, Brazil, South Africa, and the WHO. 
-
+\begin{landscape}
     \begin{table}[H]
         \centering
+        \caption{Cholesterol treatment guidelines and recommendations for primary prevention.}
         \tiny{
         \begin{threeparttable}
         \begin{tabular}{llll}
@@ -249,24 +250,32 @@ Note: The same cut-off is applied to all pairs. This cut-off may change when app
         \end{tablenotes}
         \end{threeparttable}
         }
-        \caption{Cholesterol treatment guidelines and recommendations for primary prevention.}
         \label{tab:guidelines}
     \end{table}
 
-    \subsection{Calibrating Non-HDL-C to LDL-C}
+\end{landscape}
+    
+    \newpage
 
+    \subsection{Calibrating Non-HDL-C to LDL-C}
+    In this study, we use non-HDL-C to define those who are elligible for treatment with lipid-lowering drugs as well as those whose serum cholesterol levels are ``controlled''. However, most national guidelines use LDL-C targets rather than non-HDL-C. We chose to use non-HDL-C because many surveys, especially those conducted several decades ago, did not measure LDL-C or did not measure the necessary components\footnote{Roughly speaking total cholesterol is composed of HDL-C, LDL-C, and Triglycerides} to calculate LDL-C. In the main text, we use a correction factor to convert LDL-C targets in guidelines to non-HDL-C derived from more recent guidelines in Europe and North America. 
+    
+    Here we validate this correction factor in our sample by looking at the relationship between non-HDL-C and LDL-C among studies in which both were measured (N = 198,761 observations). Figure \ref{fig:callibration} below plots non-HDL-C levels versus LDL-C levels. We fit both a linear as well as a more flexbile GAM regression model to the data and find evidence that the relationship is linear across the full range. We find a high degree of linear correlation between non-HDL-C and LDL-C ($\rho = 0.916$) with an estimated bias/correction factor of 0.65 mmol/L (25.2 mg/dL) which compares favorably with the one in the literature of 0.78 mmol/L (30 mg/dL).
 
     \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../3_figures/figS1_calibration.pdf}
-    \caption{Placeholder}
-    \label{fig:placeholder}
+    \caption{Callibrating non-HDL-C levels with LDL-C among those surveys which collected data on both.}
+    \label{fig:callibration}
     \end{figure}
     
+    \newpage 
+
     \subsection{Variable definitions}
     
     \subsection{Sensitivity analyses}
 
+    \newpage
     \subsection{Linear trends}
 
     \begin{figure}[H]
