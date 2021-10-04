@@ -26,13 +26,28 @@ results <-
             x = nonhdl, 
             vartype = "ci",
             na.rm = TRUE
-            ),
+          ),
+          risk_score = survey_mean(
+            x = risk_score, 
+            vartype = "ci",
+            na.rm = TRUE
+          ),
+          diab = survey_mean(
+            x = self_diab, 
+            vartype = "ci",
+            na.rm = TRUE
+          ),
+          smoker = survey_mean(
+            x = smoker, 
+            vartype = "ci",
+            na.rm = TRUE
+          ),
           elevated = survey_mean(
             x = elevated, 
             vartype = "ci",
             proportion = TRUE,
             na.rm = TRUE
-            ),
+          ),
           # aware = survey_mean(
           #   x = aware, 
           #   vartype = "ci",
