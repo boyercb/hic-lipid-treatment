@@ -17,20 +17,17 @@ hic <-
     nonhdl = tc_cleaned - hdl_cleaned,
     
     # calculate 10-year risk score for CVD using globorisk
-    risk_score = globorisk(
-      time = 10,  
-      iso = iso,
-      sex = as.numeric(sex - 1),
-      bl_yr = mid_year,
-      bl_age = replace(agecont, agecont > 73, 73),
+    risk_score = globorisk::globorisk(
+      sex = as.numeric(sex) - 1,
+      age = agecont,
       sbp = sbp_final_cleaned,
       tc = tc_cleaned,
       dm = self_diab,
       smk = smoker,
-      bmi = bmi_cleaned,
-      mdatadir = "1_code/globorisk/",
+      iso = iso,
+      year = replace(mid_year, mid_year <= 1999, 2000),
       version = "lab",
-      mdataft = "dta"
+      type = "risk"
     ),
       
     # define elevated serum cholesterol (i.e. treatment eligibility)
