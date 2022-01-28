@@ -111,6 +111,32 @@ hic <-
         margin_of_error(tc_cleaned, hdl_cleaned, ldl_cleaned)
   )
 
+mv_constraint_vars <- c(
+  "DBP_GREATER_THAN_SBP",
+  "LDL_GREATER_THAN_TC",
+  "HDL_GREATER_THAN_TC",
+  "CHOL_DIFF_GREATER_THAN_ME"
+  #colnames(pairs_outliers)
+)
+
+hic %>%
+  summarise(
+    across(mv_constraint_vars, mean, na.rm = TRUE, .names = "{.col}-pct"),
+    across(mv_constraint_vars, sum, na.rm = TRUE, .names = "{.col}-outliers"),
+    across(mv_constraint_vars, function (x) sum(!is.na(x)), .names = "{.col}-n")
+  ) %>%
+  pivot_longer(cols = everything()) %>%
+  separate(name, c("name", "type"), sep = "-") %>%
+  arrange(type) %>%
+  pivot_wider(names_from = "type", values_from = "value")  %>%
+  mutate(pct = pct * 100) %>%
+  kable(
+    x = .,
+    format = "latex",
+    booktabs = TRUE,
+    linesep = ""
+  )
+
 # set identified outliers to missing
 hic <- 
   hic %>%
