@@ -211,6 +211,9 @@ pairs <-
     trans2 = if_else(var2 %in% nologs, "identity", "log")
   )
 
+# drop tc - ldl pair
+pairs <- filter(pairs, !(var1 == "tc_cleaned" & var2 == "ldl_cleaned"))
+
 # generate plots
 pairs_plots <- 
   pmap(as.list(pairs), 
