@@ -83,8 +83,16 @@ rmaha_plot <- function(data, var1, var2, trans = NULL, sd = 6, nu = Inf, bins = 
       f2 <- trans[[2]]
     }
     
+    n1 <- str_remove(v1, "_clean[ed]+")
+    n2 <- str_remove(v2, "_clean[ed]+")
+    n1 <- str_remove(n1, "_final")
+    n2 <- str_remove(n2, "_final")
+    
     v1 <- ifelse(f1 == "identity", v1, paste0(f1, "(", v1, ")"))
     v2 <- ifelse(f2 == "identity", v2, paste0(f2, "(", v2, ")"))
+    
+    n1 <- ifelse(f1 == "identity", n1, paste0(f1, "(", n1, ")"))
+    n2 <- ifelse(f2 == "identity", n2, paste0(f2, "(", n2, ")"))
   } 
   
 
@@ -102,6 +110,10 @@ rmaha_plot <- function(data, var1, var2, trans = NULL, sd = 6, nu = Inf, bins = 
       name = "",
       values = c("red", "red"),
       labels = c("outliers")
+    ) + 
+    labs(
+      x = n1,
+      y = n2
     )
 }
   
