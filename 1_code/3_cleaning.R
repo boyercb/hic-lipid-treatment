@@ -152,25 +152,25 @@ hic <-
 # variable transformations ------------------------------------------------
 
 # make qq plots
-qq <-
-  hic %>% 
-  qq_plots(
-    vars = c(
-      all_of(anthro),
-      all_of(bp),
-      all_of(lipids)
-    ))
-
-qq_logged <- 
-  hic %>% 
-  qq_plots(
-    vars = c(
-      all_of(anthro),
-      all_of(bp),
-      all_of(lipids)
-    ),
-    trans = log
-  )
+# qq <-
+#   hic %>% 
+#   qq_plots(
+#     vars = c(
+#       all_of(anthro),
+#       all_of(bp),
+#       all_of(lipids)
+#     ))
+# 
+# qq_logged <- 
+#   hic %>% 
+#   qq_plots(
+#     vars = c(
+#       all_of(anthro),
+#       all_of(bp),
+#       all_of(lipids)
+#     ),
+#     trans = log
+#   )
 
 
 # pairwise plots ----------------------------------------------------------
