@@ -10,6 +10,7 @@ country_plot <- function(data, num, country) {
          )) +
     facet_rep_grid(name ~ sex + age, scales = "free_y") +
     geom_pointrange(size = 0.2, color = col) +
+    scale_x_continuous(breaks=scales::pretty_breaks(n = 4), n.breaks = 4) +
     theme_tufte(base_size = 8) +
     theme(
       axis.line = element_line(),
@@ -21,10 +22,22 @@ country_plot <- function(data, num, country) {
     ) 
 }
 
+c_by_c_vars <- c(
+  "nonhdl",
+  "nonhdl_low",
+  "nonhdl_upp",
+  "eligible",
+  "eligible_low",
+  "eligible_upp",
+  "treated",
+  "treated_low",
+  "treated_upp"
+)
+
 c_by_c <-
   results %>%
   ungroup() %>%
-  pivot_longer(nonhdl:treated_upp) %>%
+  pivot_longer(all_of(c_by_c_vars)) %>%
   mutate(
     type = case_when(
       str_detect(name, "_low") ~ "lwr",
@@ -34,8 +47,8 @@ c_by_c <-
     name = str_replace(name, "(_low)|(_upp)", ""),
     name = factor(
       name, 
-      levels = c("nonhdl", "elevated", "treated"),
-      labels = c("Non-HDL-C", "Elevated", "Treated")
+      levels = c("nonhdl", "eligible", "treated"),
+      labels = c("Non-HDL-C", "Eligible", "Treated")
     )
   ) %>%
   pivot_wider(names_from = type, values_from = value) %>%
