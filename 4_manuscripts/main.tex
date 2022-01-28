@@ -1,7 +1,9 @@
 \documentclass[12pt]{article}
 
 \input{setup}
-% \addbibresource{lipids}
+
+\addbibresource{lipids.bib}
+
 \begin{document}
 
 \begin{titlepage}
@@ -36,7 +38,7 @@
 
 \section{Discussion} \label{sec:discussion}
 
-\section{Conclusion} \label{sec:conclusion}
+%\section{Conclusion} \label{sec:conclusion}
 
 
 
@@ -51,7 +53,44 @@
 \section*{Tables} \label{sec:tab}
 \addcontentsline{toc}{section}{Tables}
 
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}[t]{lccc}
+    \toprule
+    & Non-HDL-C & Eligible & Treated\\
+    \midrule
+    woman & \num{-0.040} & \num{-0.145}*** & \num{0.043}*\\
+     & (\num{0.037}) & (\num{0.021}) & (\num{0.018})\\
+    age50-59 years & \num{0.255}*** & \num{0.182}*** & \num{0.071}***\\
+     & (\num{0.021}) & (\num{0.020}) & (\num{0.008})\\
+    age60-69 years & \num{0.244}*** & \num{0.405}*** & \num{0.090}***\\
+     & (\num{0.038}) & (\num{0.031}) & (\num{0.015})\\
+    age70-79 years & \num{0.131}* & \num{0.634}*** & \num{0.037}\\
+     & (\num{0.051}) & (\num{0.028}) & (\num{0.029})\\
+    woman × post2010 & \num{-0.418}*** & \num{0.018} & \num{0.126}***\\
+     & (\num{0.043}) & (\num{0.015}) & (\num{0.017})\\
+    age50-59 years × post2010 & \num{-0.345}*** & \num{-0.019} & \num{0.034}+\\
+     & (\num{0.029}) & (\num{0.013}) & (\num{0.016})\\
+    age60-69 years × post2010 & \num{-0.620}*** & \num{-0.119}*** & \num{0.125}**\\
+     & (\num{0.049}) & (\num{0.015}) & (\num{0.035})\\
+    age70-79 years × post2010 & \num{-0.765}*** & \num{-0.171}*** & \num{0.127}*\\
+     & (\num{0.068}) & (\num{0.018}) & (\num{0.042})\\
+    woman × age50-59 years × post2010 & \num{0.480}*** & \num{-0.002} & \num{-0.017}\\
+     & (\num{0.023}) & (\num{0.018}) & (\num{0.031})\\
+    woman × age60-69 years × post2010 & \num{0.692}*** & \num{0.059}+ & \num{-0.094}**\\
+     & (\num{0.063}) & (\num{0.030}) & (\num{0.023})\\
+    woman × age70-79 years × post2010 & \num{0.779}*** & \num{0.142}*** & \num{-0.190}***\\
+     & (\num{0.049}) & (\num{0.027}) & (\num{0.019})\\
+    \midrule
+    Observations & \num{314368} & \num{255369} & \num{107879}\\
+    $R^2$ Adj. & \num{0.074} & \num{0.237} & \num{0.192}\\
+    % Std.Errors & by: iso \& mid\_year & by: iso \& mid\_year & by: iso \& mid\_year\\
+    FE: Country & Yes & Yes & Yes\\
+    FE: Year & Yes & Yes & Yes\\
+    \bottomrule
+    \multicolumn{4}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
 
 \clearpage
 
@@ -67,22 +106,42 @@
 
 \begin{figure}[hp]
     \centering
-    \includegraphics[width=\textwidth]{../3_figures/fig2_elevated.pdf}
-    \caption{Trends in elevated serum cholesterol, by country, sex, and age group.}
-    \label{fig:elevated}
+    \includegraphics[width=\textwidth]{../3_figures/fig2_eligible.pdf}
+    \caption{Trends in eligibility for cholesterol treatment, by country, sex, and age group.}
+    \label{fig:eligible}
 \end{figure}
 
 \begin{figure}[hp]
     \centering
     \includegraphics[width=\textwidth]{../3_figures/fig3_treated.pdf}
-    \caption{Trends in treatment among people with elevated serum cholesterol, by country, sex, and age group.}
+    \caption{Trends in cholesterol treatment among people with elevated serum cholesterol, by country, sex, and age group.}
     \label{fig:treated}
 \end{figure}
 
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/fig4_severe.pdf}
+    \caption{Trends in uncontrolled dyslipidemia by country, sex, and age group.}
+    \label{fig:severe}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/fig5_uncontrolled.pdf}
+    \caption{Trends in uncontrolled dyslipidemia among those on treatment, by country, sex, and age group.}
+    \label{fig:uncontrolled}
+\end{figure}
+
+% \begin{figure}[hp]
+%     \centering
+%     \includegraphics[width=\textwidth]{../3_figures/fig6_statin.pdf}
+%     \caption{Trends in statin use among those on treatment, by country, sex, and age group.}
+%     \label{fig:statin}
+% \end{figure}
+
 \clearpage
-\setlength\bibsep{0pt}
-\bibliographystyle{unsrt}
-\bibliography{lipids}
+\printbibliography
+
 
 \begin{appendix}
     \renewcommand{\thefigure}{A\arabic{figure}}
@@ -98,7 +157,7 @@
     \renewcommand{\thesection}{\Alph{section}}
 
     \subsection{Data sources}
-    Using the NCDRisC database, we assembled data from 90 national health examination surveys completed between 1976 and 2018 in 12 high and middle-income countries: Australia, Chile, Costa Rica, Czech Republic, Germany, Italy, Poland, Romania, South Korea, Spain, United Kingdom, United States of America. These surveys included a lipid panel for a random sample of the general population. A list of surveys used and information about their design, including the age range and number of participants, whether LDL-C was calculated, and the devices used, is included in Table \ref{tab:data_sources}.
+    Using the NCDRisC database, we assembled data from 90 national health examination surveys completed between 1978 and 2018 in 12 high and middle-income countries: Australia, Chile, Costa Rica, Czech Republic, Germany, Italy, Poland, Romania, South Korea, Spain, United Kingdom, United States of America. These surveys included a lipid panel for a random sample of the general population. A list of surveys used and information about their design, including the age range and number of participants, whether LDL-C was calculated, and the devices used, is included in Table \ref{tab:data_sources}.
     
     \begin{landscape}
     \begin{singlespace}
@@ -107,18 +166,9 @@
     \end{singlespace}
     \end{landscape}
 
-    \subsection{Exlusion criteria}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\linewidth]{../3_figures/figS_STROBE.pdf}
-        \caption{Exclusion criteria.}
-        \label{fig:exclusion}
-    \end{figure}
-
 
     \subsection{Data cleaning}
-    Given the heterogeneity in the data collection and cleaning across surveys, we implemented a secondary data cleaning protocol and applied to the pooled data from all 90 surveys. The basic steps were as follows, we evaluated:
+    Given the heterogeneity in the data collection procedures and cleaning across surveys, we implemented a secondary data cleaning protocol, developed for NCD-RisC, and applied it to the pooled data from all 90 surveys. The basic steps were as follows, we evaluated:
     \begin{enumerate}
         \item univariate plausibility ranges
         \item multivariate plausibility constraints
@@ -126,9 +176,9 @@
     \end{enumerate}
 
     \subsubsection{Univariate plausibility ranges}
-    We removed values for certain laboratory and examination measurements that were outside the range of biological plausibility, as determined by expert consensus. Table \ref{tab:plausibility} below shows the plausiblity ranges used for each variable as well as the number and fraction of values removed.
+    We removed values of certain laboratory and examination measurements that were outside the range of biological plausibility, as determined by expert consensus. Table \ref{tab:plausibility} below shows the plausiblity ranges used for each variable.
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \caption{Univariate plausibility ranges for select variables from national surveys.}
         \begin{tabular}{lcc}
@@ -156,36 +206,79 @@
     \end{table}
 
     \subsubsection{Multivariate plausibility constraints}
-    The following constraints are applied after removing data outside the plausibility ranges listed above:
+    After removing data outside the univariate plausibilty ranges, we also apply logical multivariate biological plausibility constraints such as checking that the reported systolic blood pressure measurement is greater than the diastolic measurement. We evaluated the following constraints:
     \begin{itemize}
         \item SBP $>$ DBP (before calculating average BP) 
         \item TC $>$ LDL 
         \item TC $>$ HDL
-        \item TC – (LDL + HDL) $\geq$ margin of error
+        \item TC – (LDL + HDL) $\geq$ margin of error\footnote{“margin of error” is determined by using the Cholesterol Reference Method Laboratory Network permitted measurement error limits for TC (8.9\%), HDL (13\%) and LDL (12\%) as follows: Calculate errors in worst case scenario, i.e., TC underestimated, and HDL/LDL overestimated, each by the largest error permitted.}
     \end{itemize}
-
-* “margin of error” is determined by using the Cholesterol Reference Method Laboratory Network permitted measurement error limits for TC (8.9\%), HDL (13\%) and LDL (12\%) as follows:
--	Calculate errors in worst case scenario, i.e., TC underestimated, and HDL/LDL overestimated, each by the largest error permitted.
--	The limit of errors by quartiles of TC using US NHANES data
+    Table \ref{tab:mv_constraints} below shows the number of implausible observations identified and set to missing.
+    \begin{table}[H]
+        \centering
+        \caption{Implausible values detected using mulitvariate biological plausibility constraints.}
+        \label{tab:mv_constraints}
+        \begin{tabular}{lccc}
+            \toprule
+            Constraint & Evaluated (N) & Implausible (N) & \% \\
+            \midrule
+            DBP $>$ SPB & 478,407 & 8 & 0.002\\
+            LDL $>$ TC & 274,214 & 36 & 0.013\\
+            HDL $>$ TC & 459,919 & 4 & 0.001\\
+            TC – (LDL + HDL) $\geq$ margin of error & 273,547 & 209 & 0.076\\
+            \bottomrule
+            \end{tabular}
+    \end{table}
 
     \subsubsection{Multivariate outlier detection}
+    Finally, we identify multivariate outliers across pairwise combinations of risk factors based on the Mahalanobis distance. That is for vectors of observations for variables $\mathbf{x}$ and $\mathbf{y}$ we calculate the distance
+    $$d(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^t \Sigma (\mathbf{x} - \mathbf{y})}$$
+    where $\Sigma$ is the covariance matrix, which gives a sense for how far a paired set of values is from the multivariate center. For skewed variables we apply a log transformation prior to the calculation of the Mahalanobis distance. To identify potentially implausible combinations of values, we use a cut-off based on quantiles of the $\chi^2$ distribution, corresponding to a combination being more the 6 standard deviations from the center. Figure \ref{fig:pairs} below plots the pairwise distributions and highlights the possible outliers identified. 
 
-    For each pair listed above:
--	Compute the Mahalanobis of distance of all the data points after normalisation.
--	Exclude points with distance larger than 40.08, which is the quantile of chi2 distribution equivalent to 6SD for normal distribution.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = \linewidth]{../3_figures/figS2_maha_outliers.pdf}
+        \caption{Pairwise outliers based on Mahalanobis distance}
+        \label{fig:pairs}
+    \end{figure}
 
-Note: The same cut-off is applied to all pairs. This cut-off may change when applying the procedure to the whole NCD-RisC database.
+    \begin{table}[H]
+        \centering
+        \caption{Pairwise outliers detected using Mahalanobis distance.}
+        \begin{tabular}{lccc}
+            \toprule
+            Variable Pair & Evaluated (N) & Outliers (N) & \% \\
+            \midrule
+            HEIGHT vs. WEIGHT & 530,247 & 45 & 0.0084\\
+            HEIGHT vs. BMI & 530,223 & 32 & 0.0060\\
+            HEIGHT vs. WAIST & 441,684 & 32 & 0.0072\\
+            HEIGHT vs. HIP & 259,229 & 71 & 0.0273\\
+            WEIGHT vs. BMI & 530,223 & 36 & 0.0067\\
+            WEIGHT vs. WAIST & 441,837 & 410 & 0.0927\\
+            WEIGHT vs. HIP & 259,232 & 179 & 0.0690\\
+            BMI vs. WAIST & 439,276 & 493 & 0.1122\\
+            BMI vs. HIP & 257,094 & 246 & 0.0956\\
+            WAIST vs. HIP & 265,771 & 115 & 0.0432\\
+            SBP vs. DBP & 476,122 & 100 & 0.0210\\
+            TC vs. HDL & 459,027 & 6 & 0.0013\\
+            LDL vs. HDL & 273,370 & 13 & 0.0047\\
+            \bottomrule
+            \end{tabular}
+    \end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = \linewidth]{../3_figures/mahalanobis.png}
-    \caption{Pairwise outliers based on Mahalanobis distance}
-    \label{fig:pairs}
-\end{figure}
+    \subsection{Exclusion criteria}
+    The flow diagram below shows how we arrived at our final analytic sample. First, we excluded 191,912 subjects outside our target age range of 40-79 years of age, as this population is generally the focus of cholesterol treatment guidelines for primary and secondary prevention. Next, we excluded 9,120 subjects in 10-year age groups from surveys in which we had less than 5 of the 10 ages observed. Finally, we excluded 77,165 subjects with missing data on cholesterol levels and 58,999 subjects with missing data on key risk factors for calculating risk thresholds, leaving a final sample of 255,369.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{../3_figures/figS_STROBE.pdf}
+        \caption{Exclusion criteria.}
+        \label{fig:exclusion}
+    \end{figure}
 
     \subsection{Cholesterol Treatment Guidelines}
 
     We compiled a list of cholesterol treatment guidelines from official sources that have been published and discussed in the academic literature. Most of these come from a review conducted by the World Heart Foundation in 2019. They will be used, possibly, as criteria for determining who should be on treatment in assembled surveys. Note that many of these same sources have guidance about control as well (i.e. ideal reductions in LDL or absolute level attained while on treatment). Table \ref{tab:guidelines} below summarizes the specific treatment guidance from the US, Europe, the UK, Canada, China, Brazil, South Africa, and the WHO. 
+
 \begin{landscape}
     \begin{table}[H]
         \centering
@@ -268,27 +361,79 @@ Note: The same cut-off is applied to all pairs. This cut-off may change when app
     \caption{Callibrating non-HDL-C levels with LDL-C among those surveys which collected data on both.}
     \label{fig:callibration}
     \end{figure}
-    
+
     \newpage 
 
-    \subsection{Variable definitions}
+    \subsection{Calculation of risk scores}
+    For risk-based guidelines about treatment eligibility, we used Globorisk \cite{hajifathalian_novel_2015} to calculate risk scores for all individuals with complete risk factor data. Globorisk is a cardiovascual disease risk prediction equation that can be recalibrated and updated for use in different countries with routinely available information. Currently it supports risk estimates for 182 countries from 2000 to 2020 \cite{ueda_laboratory-based_2017}. Coefficients were estimated in original study using Cox propostional hazards model with age as the time scale. Thus the risk equation is of the form: 
     
-    \subsection{Sensitivity analyses}
+    \begin{align*}
+        h(t \mid& sex, sbp, tc, dm, smk) = h_0(t) \exp\big\{ \\
+        &\quad \beta_1 (sbp - \overline{sbp}) + \beta_2 (tc - \overline{tc}) + \beta_3 (dm - \overline{dm}) + \beta_4 (smk - \overline{smk}) + \beta_5 (dm - \overline{dm}) \times sex
+        \\ &\quad + \beta_6 (smk - \overline{smk}) \times sex + \beta_7 (sbp - \overline{sbp}) \times t + \beta_8 (tc - \overline{tc}) \times t + \beta_9 (dm - \overline{dm}) \times t
+        \\ &\quad  + \beta_{10} (smk - \overline{smk}) \times t \\
+        \big\}
+    \end{align*}
+    where $(\beta_1, \ldots, \beta_{10})$ are constant across countries but the mean risk factor levels $(\overline{sbp}, \ldots, \overline{smk}$) and baseline hazard $h_0(t)$ are country-specific and thus can be re-callibrated to local conditions. The values of $(\beta_1, \ldots, \beta_{10})$ are provided in table below.
+    \begin{table}[H]
+        \centering
+        \caption{Coefficient values for Globorisk risk equations.}
+        \label{tab:coefs}
+        \begin{tabular}[t]{cc}
+            \toprule
+            Coefficient & Estimate  \\
+            \midrule
+            $\beta_1$ & 0.3070129 \\
+            $\beta_2$ & 0.6149061 \\
+            $\beta_3$ & 1.475305 \\
+            $\beta_4$ & 1.846684 \\
+            $\beta_5$ & 0.4050458 \\
+            $\beta_6$ & 0.3253832 \\
+            $\beta_7$ & -0.002247118 \\
+            $\beta_8$ & -0.006865652 \\
+            $\beta_9$ & -0.01320953 \\
+            $\beta_{10}$ & -0.02205285 \\
+            \bottomrule
+            \end{tabular}
+    \end{table}
+    Country-specific risk factor values and baseline hazards were the same as those used in a prior study \cite{ueda_laboratory-based_2017}. The estimated risk for each subject is calculated as 10-year cumulative incidence based on the formula
+    \begin{equation*}
+        CI = 1 - \prod_{t=0}^T\exp\{h(t \mid sex, sbp, tc, dm, smk)\}.
+    \end{equation*}
+    All calculations were performed using the \texttt{globorisk} package \cite{boyer_globorisk_2022} in R. For reference, below are the trends in mean risk score by country, sex, and age group. 
+
+    \begin{figure}[hp]
+        \centering
+        \includegraphics[width=\textwidth]{../3_figures/figS3_risk_score.pdf}
+        \caption{Trends in mean risk score by country, sex, and age group.}
+        \label{fig:globorisk}
+    \end{figure}
+    
+%    \subsection{Sensitivity analyses}
 
     \newpage
     \subsection{Linear trends}
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\linewidth]{../3_figures/figS_mean_chol_trends.pdf}
-        \caption{Linear trends in mean Non-HDL serum cholesterol level by country, age, and sex.}
+        \includegraphics[width=0.9\linewidth]{../3_figures/figS_mean_chol_trends.pdf}
+        \caption{Linear trends in mean Non-HDL-C level by country, age, and sex.}
         \label{fig:trends}
     \end{figure}
-
-
-    \subsection{Country-by-country results}
+    \newpage 
 
     \begin{landscape}
+        \subsection{Example distributional changes}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/figS4_densities.pdf}
+            \caption{Changes in distribution of Non-HDL-C in United States by sex and age group.}
+            \label{fig:densities}
+        \end{figure}
+
+        \subsection{Country-by-country results}
+
         \begin{figure}[H]
             \centering
             \includegraphics[width=\linewidth]{../3_figures/countries/fig_australia.pdf}
@@ -374,7 +519,19 @@ Note: The same cut-off is applied to all pairs. This cut-off may change when app
         \end{figure}
     \end{landscape}
 
+    % \subsection{Missing cholesterol data}
+    % \begin{singlespace}
+    %     \input{../2_tables/missing_chol_data.tex}
+    %     \label{tab:missing_chol_data}
+    % \end{singlespace}
 
+    % \newpage
+    
+    % \subsection{Missing smoking data}
+    % \begin{singlespace}
+    %     \input{../2_tables/missing_smk_data.tex}
+    %     \label{tab:missing_smk_data}
+    % \end{singlespace}
     %\printbibliography
     %\bibliography{Placeholder}
 \end{appendix}

@@ -13,7 +13,7 @@
     comment,
     footmisc,
     caption,
-    natbib,
+    % natbib,
     pdflscape,
     subfigure,
     array,
@@ -22,15 +22,25 @@
     longtable,
     float,
     threeparttable}
-% \usepackage[
-%     backend=biber,
-%     style=nature,
-%     doi=false,
-%     isbn=false,
-%     url=false,
-%     eprint=false
-%     ]{biblatex}
-        
+
+\usepackage[
+    backend=biber,
+    style=nature,
+    date=year,
+    doi=true,
+    isbn=false,
+    url=false,
+    eprint=false
+]{biblatex}
+
+\AtEveryBibitem{%
+  \clearfield{note}%
+}
+\AtEveryCitekey{\clearlist{publisher}}
+\AtEveryBibitem{\clearlist{publisher}}
+
+\usepackage{siunitx}
+\newcolumntype{d}{S[input-symbols = ()]}
 
 \normalem
 
