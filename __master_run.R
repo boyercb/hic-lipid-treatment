@@ -1,5 +1,6 @@
 # Define global analysis parameters ---------------------------------------
 
+rerun_imputations <- FALSE
 
 # Packages and helper functions -------------------------------------------
 
@@ -16,14 +17,18 @@ source("1_code/3_cleaning.R")
 
 source("1_code/4_exclusion.R")
 
-source("1_code/5_create_variables.R")
+source("1_code/5_imputations.R")
+
+source("1_code/6_create_variables.R")
 
 
 # Main analysis -----------------------------------------------------------
 
-source("1_code/6_analysis.R")
+source("1_code/7_analysis.R")
 
-source("1_code/7_plots.R")
+source("1_code/8_plots.R")
+
+source("1_code/9_regressions.R")
 
 
 # Appendix ----------------------------------------------------------------
@@ -34,7 +39,7 @@ source("1_code/X2_calibration.R")
 
 source("1_code/X3_outliers.R")
 
-source("1_code/X4_sensitivity.R")
+#source("1_code/X4_sensitivity.R")
 
 source("1_code/X5_linear_trends.R")
 
