@@ -20,6 +20,31 @@ bp <- c(
 
 nologs <- c("dbp_final_cleaned", "height_cleand")
 
+
+# variable recoding based on conversation w Bin ---------------------------
+
+hic <-
+  hic %>%
+  mutate(
+    # recode smoking variable in UK surveys with never smoker = 0 to 0
+    smoker = replace(smoker, Country == "United Kingdom" & is.na(smoker) & smoke_ever == 0, 0),
+    # recode smoking variable in US NHANES to 0 if missing
+    smoker = replace(smoker, Country == "United States of America" & is.na(smoker), 0),
+    # unknown issues with smoking data (remove)
+    smoker = replace(smoker, id_study %in% c("DEU_2007_HNRS", "AUS_1989_RFPS"), 0),
+    # recode ‘drug_chol == NA & self_chol == 0’ to ‘drug_chol = 0’
+    drug_chol = replace(drug_chol, id_study == "AUS_2012_AusDiab" & is.na(drug_chol) & self_chol == 0, 0),
+    # consider all ‘drug_chol == NA’ as ‘drug_chol = 0’ for the following 
+    drug_chol = replace(drug_chol, 
+                        (id_study %in% c("ESP_2009_ENRICA", "POL_2004_WOBASZ") | 
+                           str_detect(id_study, "(GBR_[0-9]+_NDNS)|(USA_[0-9]+_NHANES)")) & 
+                          is.na(drug_chol), 
+                        0),
+    drug_chol = ifelse(is.na(drug_chol) & !is.na(drug_chol_stat), drug_chol_stat, drug_chol),
+    drug_chol = ifelse(is.na(drug_chol) & drug_chol_fibr == 1 & drug_chol_stat == 0, drug_chol_fibr, drug_chol)
+  )
+
+
 # summary statistics ------------------------------------------------------
 
 # summarise all relevant variables
