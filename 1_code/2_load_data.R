@@ -4,3 +4,6 @@ hic <- as_tibble(hic)
 
 # read in meta-data for all NCDRisC surveys
 ncdrisc <- read_csv("0_data/metadata_lipids_20210206_wNmed.csv")
+
+# drop home care dataset
+hic <- filter(hic, id_study != "GBR_2000_HSE")
