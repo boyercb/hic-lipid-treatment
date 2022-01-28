@@ -25,11 +25,23 @@ exclude_age_range <- original_size - exclude_age - nrow(hic)
 # exclude if no data on non-hdl tc
 hic <- 
   hic %>%
-  filter(!(is.na(tc_cleaned) | is.na(hdl_cleaned)))
+  mutate(missing_chol = (is.na(tc_cleaned) | is.na(hdl_cleaned)))
 
-exclude_missing_data <- original_size - exclude_age - exclude_age_range - nrow(hic)  
+exclude_missing_chol <- original_size - exclude_age - exclude_age_range - sum(!hic$missing_chol) 
 
-sample_size <- nrow(hic)
+# count number for which there are missing risk factors
+hic <- 
+  hic %>%
+  mutate(missing_rf = (
+    is.na(sex) |
+      is.na(age) |
+      is.na(sbp_final_cleaned) |
+      is.na(self_diab) | is.na(smoker) | is.na(drug_chol)
+  ))
+
+exclude_missing_rf <- sum(as.numeric(hic$missing_rf & !hic$missing_chol))
+
+sample_size <- original_size - exclude_age - exclude_age_range - exclude_missing_chol - exclude_missing_rf
 
 a1 <-
   paste0(
@@ -42,7 +54,8 @@ a1 <-
 b1 <- ''
 c1 <- ''
 d1 <- ''
-e1 <- paste0('Final analytic cohort\n(N = ',
+e1 <- ''
+f1 <- paste0('Final analytic dataset\n(N = ',
              format(sample_size, big.mark = ","),
              ')')
 a2 <- ''
@@ -57,55 +70,64 @@ c2 <-
 d2 <-
   paste0(
     'Missing values on\nTC or HDL-C\n(N = ',
-    format(exclude_missing_data, big.mark = ","),
+    format(exclude_missing_chol, big.mark = ","),
     ')'
   )
-e2 <- ''
+
+e2 <- paste0(
+  'Missing values on\nother risk factors\n(N = ',
+  format(exclude_missing_rf, big.mark = ","),
+  ')'
+)
+
+f2 <- ''
 
   
 # Create a node dataframe
 ndf <- create_node_df(
-  n = 10,
-  label = c(a1, b1, c1, d1, e1, # Column 1
-            a2, b2, c2, d2, e2), # Column 2
-  style = c('solid', 'invis', 'invis', 'invis', 'solid', # Column 1
-            'invis', 'solid', 'solid', 'solid', 'invis'), # Column 2
-  shape = c('box', 'point', 'point', 'point', 'box', # Column 1 
-            'plaintext', 'box', 'box', 'box', 'point'), # Column 2
-  width = c(3, 0.001, 0.001, 0.001, 3, # Column 1
-            3, 3, 3, 3, 3), # Column 2
-  height = c(1, 0.001, 0.001, 0.001, 1, # Column 1
-             1, 1, 1, 1, 1), # Column 2
-  fontsize = c(rep(14, 10)),
-  fontname = c(rep('Helvetica', 10)),
+  n = 12,
+  label = c(a1, b1, c1, d1, e1, f1,  # Column 1
+            a2, b2, c2, d2, e2, f2), # Column 2
+  style = c('solid', 'invis', 'invis', 'invis', 'invis', 'solid',  # Column 1
+            'invis', 'solid', 'solid', 'solid', 'solid', 'invis'), # Column 2
+  shape = c('box', 'point', 'point', 'point', 'point', 'box',  # Column 1 
+            'plaintext', 'box', 'box', 'box', 'box', 'point'), # Column 2
+  width = c(3, 0.001, 0.001, 0.001, 0.001, 3, # Column 1
+            3, 3, 3, 3, 3, 3), # Column 2
+  height = c(1, 0.001, 0.001, 0.001, 0.001, 1, # Column 1
+             1, 1, 1, 1, 1, 1), # Column 2
+  color = 'black',
+  fontcolor = 'black',
+  fontsize = c(rep(14, 12)),
+  fontname = c(rep('Helvetica', 12)),
   penwidth = 1.5,
   fixedsize = 'true',
-  x = c(0, 0, 0, 0, 0,
-        3.5, 3.5, 3.5, 3.5, 3.5),
-  y = c(5, 3.75, 2.5, 1.25, 0, 
-        5, 3.75, 2.5, 1.25, 0)
+  x = c(0, 0, 0, 0, 0, 0,
+        3.5, 3.5, 3.5, 3.5, 3.5, 3.5),
+  y = c(6.25, 5, 3.75, 2.5, 1.25, 0, 
+        6.25, 5, 3.75, 2.5, 1.25, 0)
   )
 
 # Create an edge dataframe
 edf <- create_edge_df(
-  from = c(1, 2, 3, 4, # Column 1
-           6, 7, 8, 9, # Column 2
-           2, 3, 4 # Horizontals
+  from = c(1, 2, 3, 4, 5,   # Column 1
+           7, 8, 9, 10, 11, # Column 2
+           2, 3, 4, 5       # Horizontals
   ),
-  to = c(2, 3, 4, 5, # Column 1
-         7, 8, 9, 10, # Column 2
-         7, 8, 9 # Horizontals
+  to = c(2, 3, 4, 5, 6,    # Column 1
+         8, 9, 10, 11, 12, # Column 2
+         8, 9, 10, 11      # Horizontals
   ),
-  arrowhead = c('none', 'none', 'none', 'normal', # Column 1
-                'none', 'none', 'none', 'none', # Column 2
-                'normal', 'normal', 'normal' # Horizontals
+  arrowhead = c('none', 'none', 'none', 'none', 'normal', # Column 1
+                'none', 'none', 'none', 'none', 'none',   # Column 2
+                'normal', 'normal', 'normal', 'normal'    # Horizontals
   ),
-  color = c('black', 'black', 'black', 'black', # Column 1
-            '#00000000', '#00000000', '#00000000', '#00000000', # Column 2
-            'black', 'black', 'black' # Horizontals
+  color = c('black', 'black', 'black', 'black', 'black', # Column 1
+            '#00000000', '#00000000', '#00000000', '#00000000', '#00000000', # Column 2
+            'black', 'black', 'black', 'black' # Horizontals
   ),
-  constraint = c(rep('true', 8), # Columns
-                 rep('false', 3) # Horizontals
+  constraint = c(rep('true', 10), # Columns
+                 rep('false', 4)  # Horizontals
   )
 )
 
