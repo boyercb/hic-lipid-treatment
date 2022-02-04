@@ -121,5 +121,9 @@ results_nonhdl <- results_nonhdl %>%
 results <- results %>%
   unnest(stats) 
 
-results <- bind_rows(results_nonhdl, results)
+results <- left_join(
+  x = results_nonhdl,
+  y = select(results, -srvy, -data),
+  by = c("id_study", "Country", "mid_year", "sex", "age")
+)
 
