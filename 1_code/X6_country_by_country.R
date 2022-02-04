@@ -1,5 +1,5 @@
 country_plot <- function(data, num, country) {
-  col <- RColorBrewer::brewer.pal(12, "Set3")[num]
+  col <- better_colors[num]
   
   ggplot(data,
          aes(

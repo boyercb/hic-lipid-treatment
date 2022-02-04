@@ -9,7 +9,7 @@ g <-
          )) +
   facet_rep_grid(age ~ sex) +
   geom_smooth(se = FALSE, method = "lm") +
-  scale_color_brewer(name = "", palette = "Set3") +
+  scale_color_manual(name = "", values = better_colors) +
   theme_tufte(base_size = 12) +
   theme(
     axis.line = element_line(),
