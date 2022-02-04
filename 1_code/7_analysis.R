@@ -21,7 +21,7 @@ results_nonhdl <-
       srvy %>%
         group_by(sex, age) %>%
         summarise(
-          n_nonhdl = survey_total(),
+          n_nonhdl = n(),
           nonhdl = survey_mean(
             x = nonhdl, 
             vartype = "ci",
@@ -51,7 +51,7 @@ results <-
       srvy %>%
         group_by(sex, age) %>%
         summarise(
-          n_other = survey_total(),
+          n_other = n(),
           nonhdl_untreated = survey_mean(
             x = nonhdl_untreated, 
             vartype = "ci",
