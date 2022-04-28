@@ -65,3 +65,6 @@ globorisk/
 4_manuscripts/main.toc
 .Rproj.user
 .Rdata
+
+# archive folders
+__archive/
