@@ -1,6 +1,7 @@
 # Define global analysis parameters ---------------------------------------
 
 rerun_imputations <- FALSE
+rerun_analysis <- TRUE
 
 # Packages and helper functions -------------------------------------------
 
