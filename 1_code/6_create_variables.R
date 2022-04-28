@@ -3,15 +3,18 @@ hic <-
   mutate(
     sex = factor(sex, labels = c("Men", "Women")),
     
-    agecont = age,
+    agecont = ifelse(exclude_age | exclude_age_range, NA, age),
     
     # create 10-year age categories
     age = cut(
-      x = age,
+      x = agecont,
       breaks = seq(40, 80, by = 10), 
       labels = c("40-49 years", "50-59 years", "60-69 years", "70-79 years"),
+      exclude = NULL,
       right = FALSE
     ),
+    
+    age = addNA(age),
     
     # calculate nonhdl total serum cholesterol
     nonhdl = tc_cleaned - hdl_cleaned,

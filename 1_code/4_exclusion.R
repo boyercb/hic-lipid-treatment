@@ -2,9 +2,9 @@ n_surveys <- length(unique(hic$id_study))
 original_size <- nrow(hic)
 
 # limit to those between 40 and 79 years of age
-hic <- filter(hic, age >= 40 & age <= 79)
+hic <- mutate(hic, exclude_age = as.numeric(age < 40 | age > 79))
 
-exclude_age <- original_size - nrow(hic)
+exclude_age <- sum(hic$exclude_age)
 
 # exclude if less than 5 years within a particular age range
 hic <- 
@@ -12,22 +12,24 @@ hic <-
   group_by(id_study) %>%
   mutate(
     maxage = max(age, na.rm = TRUE),
-    minage = min(age, na.rm = TRUE)
+    minage = min(age, na.rm = TRUE),
+    exclude_age_range = as.numeric(
+      (age >= 40 & age <= 49 & (maxage < 45 | minage > 45)) |
+      (age >= 50 & age <= 59 & (maxage < 55 | minage > 55)) |
+      (age >= 60 & age <= 69 & (maxage < 65 | minage > 65)) |
+      (age >= 70 & age <= 79 & (maxage < 75 | minage > 75))
+    )
   ) %>%
-  filter(!(age >= 40 & age <= 49 & (maxage < 45 | minage > 45))) %>%
-  filter(!(age >= 50 & age <= 59 & (maxage < 55 | minage > 55))) %>%
-  filter(!(age >= 60 & age <= 69 & (maxage < 65 | minage > 65))) %>%
-  filter(!(age >= 70 & age <= 79 & (maxage < 75 | minage > 75))) %>%
   ungroup()
 
-exclude_age_range <- original_size - exclude_age - nrow(hic)  
+exclude_age_range <- sum(hic$exclude_age_range & !hic$exclude_age)  
 
 # exclude if no data on non-hdl tc
 hic <- 
   hic %>%
   mutate(missing_chol = (is.na(tc_cleaned) | is.na(hdl_cleaned)))
 
-exclude_missing_chol <- original_size - exclude_age - exclude_age_range - sum(!hic$missing_chol) 
+exclude_missing_chol <- sum(hic$missing_chol & !hic$exclude_age_range & !hic$exclude_age)  
 
 # count number for which there are missing risk factors
 hic <- 
@@ -39,7 +41,7 @@ hic <-
       is.na(self_diab) | is.na(smoker) | is.na(drug_chol)
   ))
 
-exclude_missing_rf <- sum(as.numeric(hic$missing_rf & !hic$missing_chol))
+exclude_missing_rf <- sum(hic$missing_rf & !hic$missing_chol & !hic$exclude_age_range & !hic$exclude_age)  
 
 sample_size <- original_size - exclude_age - exclude_age_range - exclude_missing_chol - exclude_missing_rf
 

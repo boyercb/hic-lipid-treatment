@@ -1,6 +1,4 @@
-results <- filter(
-  results, !id_study %in% c("GBR_2010_NDNS", "GBR_2014_NDNS", "GBR_2016_NDNS", "GBR_2017_NDNS")
-)
+
 # colourCount <- length(unique(results$Country)) # number of levels
 # getPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set1"))
 
