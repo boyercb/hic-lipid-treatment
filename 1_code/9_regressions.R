@@ -1,6 +1,3 @@
-library(fixest)
-library(modelsummary)
-
 d <- hic
 d$post2010 = ifelse(d$mid_year >= 2010, 1, 0)
 d$woman = as.numeric(d$sex) - 1
@@ -24,19 +21,6 @@ fe <- list(
     vcov = "twoway"
   )
 )
-
-
-# View(hic %>% filter(is.na(treated)) %>%
-#   select(id_study,
-#          Country,
-#          mid_year,
-#          iso,
-#          all_of(c(anthro, lipids, bp)),
-#          sex,
-#          agecont,
-#          age,
-#          smoker,
-#          self_diab))
 
 modelsummary(models = fe,
              output = "latex",

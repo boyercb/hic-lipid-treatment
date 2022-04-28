@@ -1,8 +1,10 @@
 
 # combine hic sample with meta-data from NCDRisC database
-data_sources <- select(hic, id_study)
+data_sources <- select(hic, id_study, survey, Country, start_year, end_year)
 data_sources <- distinct(data_sources)
-data_sources <- left_join(data_sources, ncdrisc)
+data_sources <-
+  left_join(data_sources,
+            select(ncdrisc,-survey,-Country,-start_year,-end_year))
 
 # subset to relevant information for Appendix table
 data_sources <- 
@@ -12,7 +14,7 @@ data_sources <-
   mutate(
     no = row_number(),
     survey = if_else(
-      str_detect(survey, survey_short), 
+      str_detect(survey, survey_short) | is.na(survey_short), 
       survey, 
       paste0(survey, " (", survey_short, ")")
     ),
