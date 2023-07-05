@@ -40,7 +40,7 @@ source("1_code/X2_calibration.R")
 
 source("1_code/X3_outliers.R")
 
-#source("1_code/X4_sensitivity.R")
+source("1_code/X4_sensitivity.R")
 
 source("1_code/X5_linear_trends.R")
 

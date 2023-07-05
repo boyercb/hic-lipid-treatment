@@ -1,5 +1,5 @@
 g <- 
-  ggplot(results,
+  ggplot(age_sex_results,
          aes(
            x = mid_year,
            y = nonhdl,
@@ -30,8 +30,8 @@ ggsave(
 
 
 
-linear_results <- 
-  results %>%
+linear_age_sex_results <- 
+  age_sex_results %>%
   ungroup() %>%
   select(id_study, Country, mid_year, data, srvy) %>%
   unnest(c(data)) %>%

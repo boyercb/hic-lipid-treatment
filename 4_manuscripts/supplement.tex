@@ -1,0 +1,615 @@
+\documentclass[12pt]{article}
+
+\input{setup.tex}
+
+\addbibresource{lipids.bib}
+
+
+\begin{document}
+\title{\textit{Supplementary Materials for:} Long-term and recent trends in serum cholesterol treatment and control in 14 high-income countries: an analysis of 1XX nationally representative surveys}
+\author{NCD Risk Factor Collaboration (NCD-RisC)}
+\maketitle
+\clearpage
+\begin{appendix}
+\begin{refsection}
+    \renewcommand{\thefigure}{A\arabic{figure}}
+    \setcounter{figure}{0}
+    
+    \renewcommand{\thetable}{A\arabic{table}}
+    \setcounter{table}{0}
+    
+%    \appendixwithtoc
+    \newpage
+    
+    \section{Appendix} \label{sec:appendixa}
+    \renewcommand{\thesection}{\Alph{section}}
+
+    \subsection{Data sources}
+    We used a database on cardiometabolic risk factors collated by NCD-RisC. NCD-RisC is a worldwide network of health researchers and practitioners whose aim is to document systematically worldwide trends and variations in NCD risk factors. The database was collated through multiple routes for iden- tifying and accessing data. We accessed publicly available population-based measurement surveys [e.g. Demographic and Health Surveys (DHS), Global School-based Student Health Surveys (GSHS), the European Health Interview and Health Examination Surveys (EHIS and EHES) and those available via the Inter-university Consortium for Political and Social Research (ICPSR)]. We requested, via the World Health Organization (WHO) and its regional and country offices, help with identification and access to population- based surveys from ministries of health and other national health and statistical agencies. Requests were also sent via the World Heart Federation to its national partners. We made similar requests to the co-authors of an earlier pooled analysis of cardiometabolic risk factors5,46–48 and invited them to reanalyse data from their studies and join NCD- RisC. Finally, to identify major sources not accessed through the above routes, we searched and reviewed pub- lished studies as detailed previously42–44 and invited all eligi- ble studies to join NCD-RisC.
+
+
+    Using the NCDRisC database, we assembled data from 90 national health examination surveys completed between 1978 and 2018 in 12 high and middle-income countries: Australia, Chile, Costa Rica, Czech Republic, Germany, Italy, Poland, Romania, South Korea, Spain, United Kingdom, United States of America. These surveys included a lipid panel for a random sample of the general population. A list of surveys used and information about their design, including the age range and number of participants, whether LDL-C was calculated, and the devices used, is included in Table \ref{tab:data_sources}.
+    
+    \begin{landscape}
+    \begin{singlespace}
+        \input{../2_tables/data_sources.tex}
+        \label{tab:data_sources}
+    \end{singlespace}
+    \end{landscape}
+
+
+    \subsection{Data cleaning}
+    Given the heterogeneity in the data collection procedures and cleaning across surveys, we implemented a secondary data cleaning protocol, developed for NCD-RisC, and applied it to the pooled data from all 90 surveys. The basic steps were as follows, we evaluated:
+    \begin{enumerate}
+        \item univariate plausibility ranges
+        \item multivariate plausibility constraints
+        \item multivariate outlier detection
+    \end{enumerate}
+
+    \subsubsection{Univariate plausibility ranges}
+    We removed values of certain laboratory and examination measurements that were outside the range of biological plausibility, as determined by expert consensus. Table \ref{tab:plausibility} below shows the plausiblity ranges used for each variable.
+
+    \begin{table}[H]
+        \centering
+        \caption{Univariate plausibility ranges for select variables from national surveys.}
+        \begin{tabular}{lcc}
+            \hline
+            Variable & Ages & Plausibility range \\
+            \hline
+            height (cm) & 5 to 9 years & 60 - 180 \\
+            height (cm) & 10 to 14 years & 80 - 200 \\
+            height (cm) & $\geq$15 years & 100 - 250 \\
+            weight (kg) & 5 to 9 years & 5 - 90 \\
+            weight (kg) & 10 to 14 years & 8 - 150 \\
+            weight (kg) & $\geq$15 years & 12 - 300 \\
+            BMI (kg/m$^2$) & 5 to 9 years & 6 - 40 \\
+            BMI (kg/m$^2$) & 10 to 14 years & 8 - 60 \\
+            BMI (kg/m$^2$) & $\geq$15 years & 10 - 80 \\
+            SBP (mmHg) & all & 70 - 270 \\
+            DBP (mmHg) & all & 30 - 150 \\
+            TC (mmol/L) & all & 1.75 - 20 \\
+            LDL (mmol/L) & all & 0.5 - 10 \\
+            HDL (mmol/L) & all & 0.4 - 5 \\
+            Triglycerides (mmol/L) & all & 0.2 - 20 \\
+            \hline
+        \end{tabular}
+        \label{tab:plausibility}
+    \end{table}
+
+    \subsubsection{Multivariate plausibility constraints}
+    After removing data outside the univariate plausibilty ranges, we also apply logical multivariate biological plausibility constraints such as checking that the reported systolic blood pressure measurement is greater than the diastolic measurement. We evaluated the following constraints:
+    \begin{itemize}
+        \item SBP $>$ DBP (before calculating average BP) 
+        \item TC $>$ LDL 
+        \item TC $>$ HDL
+        \item TC – (LDL + HDL) $\geq$ margin of error\footnote{“margin of error” is determined by using the Cholesterol Reference Method Laboratory Network permitted measurement error limits for TC (8.9\%), HDL (13\%) and LDL (12\%) as follows: Calculate errors in worst case scenario, i.e., TC underestimated, and HDL/LDL overestimated, each by the largest error permitted.}
+    \end{itemize}
+    Table \ref{tab:mv_constraints} below shows the number of implausible observations identified and set to missing.
+    \begin{table}[H]
+        \centering
+        \caption{Implausible values detected using mulitvariate biological plausibility constraints.}
+        \label{tab:mv_constraints}
+        \begin{tabular}{lccc}
+            \toprule
+            Constraint & Evaluated (N) & Implausible (N) & \% \\
+            \midrule
+            DBP $>$ SPB & 478,407 & 8 & 0.002\\
+            LDL $>$ TC & 274,214 & 36 & 0.013\\
+            HDL $>$ TC & 459,919 & 4 & 0.001\\
+            TC – (LDL + HDL) $\geq$ margin of error & 273,547 & 209 & 0.076\\
+            \bottomrule
+            \end{tabular}
+    \end{table}
+
+    \subsubsection{Multivariate outlier detection}
+    Finally, we identify multivariate outliers across pairwise combinations of risk factors based on the Mahalanobis distance. That is for vectors of observations for variables $\mathbf{x}$ and $\mathbf{y}$ we calculate the distance
+    $$d(\mathbf{x}, \mathbf{y}) = \sqrt{(\mathbf{x} - \mathbf{y})^t \Sigma (\mathbf{x} - \mathbf{y})}$$
+    where $\Sigma$ is the covariance matrix, which gives a sense for how far a paired set of values is from the multivariate center. For skewed variables we apply a log transformation prior to the calculation of the Mahalanobis distance. To identify potentially implausible combinations of values, we use a cut-off based on quantiles of the $\chi^2$ distribution, corresponding to a combination being more the 6 standard deviations from the center. Figure \ref{fig:pairs} below plots the pairwise distributions and highlights the possible outliers identified. 
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = \linewidth]{../3_figures/figS2_maha_outliers.pdf}
+        \caption{Pairwise outliers based on Mahalanobis distance}
+        \label{fig:pairs}
+    \end{figure}
+
+    \begin{table}[H]
+        \centering
+        \caption{Pairwise outliers detected using Mahalanobis distance.}
+        \begin{tabular}{lccc}
+            \toprule
+            Variable Pair & Evaluated (N) & Outliers (N) & \% \\
+            \midrule
+            HEIGHT vs. WEIGHT & 530,247 & 45 & 0.0084\\
+            HEIGHT vs. BMI & 530,223 & 32 & 0.0060\\
+            HEIGHT vs. WAIST & 441,684 & 32 & 0.0072\\
+            HEIGHT vs. HIP & 259,229 & 71 & 0.0273\\
+            WEIGHT vs. BMI & 530,223 & 36 & 0.0067\\
+            WEIGHT vs. WAIST & 441,837 & 410 & 0.0927\\
+            WEIGHT vs. HIP & 259,232 & 179 & 0.0690\\
+            BMI vs. WAIST & 439,276 & 493 & 0.1122\\
+            BMI vs. HIP & 257,094 & 246 & 0.0956\\
+            WAIST vs. HIP & 265,771 & 115 & 0.0432\\
+            SBP vs. DBP & 476,122 & 100 & 0.0210\\
+            TC vs. HDL & 459,027 & 6 & 0.0013\\
+            LDL vs. HDL & 273,370 & 13 & 0.0047\\
+            \bottomrule
+            \end{tabular}
+    \end{table}
+
+    \subsection{Exclusion criteria}
+    The flow diagram below shows how we arrived at our final analytic sample. First, we excluded 191,912 subjects outside our target age range of 40-79 years of age, as this population is generally the focus of cholesterol treatment guidelines for primary and secondary prevention. Next, we excluded 9,120 subjects in 10-year age groups from surveys in which we had less than 5 of the 10 ages observed. Finally, we excluded 77,165 subjects with missing data on cholesterol levels and 58,999 subjects with missing data on key risk factors for calculating risk thresholds, leaving a final sample of 255,369.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{../3_figures/figS_STROBE.pdf}
+        \caption{Exclusion criteria.}
+        \label{fig:exclusion}
+    \end{figure}
+
+    \subsection{Cholesterol Treatment Guidelines}
+
+    We compiled a list of cholesterol treatment guidelines from official sources that have been published and discussed in the academic literature. Most of these come from a review conducted by the World Heart Foundation in 2019. They were used as criteria for determining who should be on treatment in assembled surveys. Note that many of these same sources have guidance about control as well (i.e. ideal reductions in LDL or absolute level attained while on treatment). Table \ref{tab:guidelines} below summarizes the specific treatment guidance from the US, Europe, the UK, Canada, China, Brazil, South Africa, and the WHO. 
+
+    For this study, we based our definition of treatment eligibility on the NHLBI NCEP ATP III guidelines to define the eligible population as those meeting:
+    \begin{itemize}
+        \item Non-HDL-C $>$ 220 mg/dL (LDL-C $>$ 190 mg/dL) or
+        \item Non-HDL-C $>$ 190 mg/dL (LDL-C $>$ 160 mg/dL) and 10-year risk $>$ 5\% or
+        \item Non-HDL-C $>$ 145 mg/dL (LDL-C $>$ 130 mg/dL) and 10-year risk $>$ 10\% or
+        \item Non-HDL-C $>$ 115 mg/dL (LDL-C $>$ 100 mg/dL) and 10-year risk $>$ 20\% or
+        \item Already on cholesterol lowering medication
+    \end{itemize}
+    where the last criteria assumes that those already on lipid-lowering medication were eligible at the time the meds were perscribed. As described below we used Globorisk risk equations to calculate CVD risk to inform eligibility.
+
+    
+\begin{landscape}
+
+%Please add the following packages if necessary:
+%\usepackage{booktabs, multirow} % for borders and merged ranges
+%\usepackage{soul}% for underlines
+%\usepackage[table]{xcolor} % for cell colors
+%\usepackage{changepage,threeparttable} % for wide tables
+%If the table is too wide, replace \begin{table}[!htp]...\end{table} with
+%\begin{adjustwidth}{-2.5 cm}{-2.5 cm}\centering\begin{threeparttable}[!htb]...\end{threeparttable}\end{adjustwidth}
+\tiny{
+\begin{longtable}{
+    >{\raggedright}p{0.15\textwidth}
+    ll
+    >{\raggedright}p{0.2\textwidth}
+    >{\raggedright}p{0.15\textwidth}
+    >{\raggedright}p{0.15\textwidth}
+    >{\raggedright}p{0.15\textwidth}
+    >{\raggedright}p{0.15\textwidth}
+    p{0.1\textwidth}}
+    \caption{\label{tab:guidelines}National guidelines for cholesterol treatment.}\\
+    \toprule
+    \textbf{Country} &\textbf{Year} &\textbf{Association} &\textbf{Document} &\textbf{Immediate treatment threshold} &\textbf{Threshold after lifestyle interventions} &\textbf{Goal of therapy} &\textbf{First line treatment} &\textbf{Prediction model} \\
+    \midrule
+    \endfirsthead
+    \caption[]{National guidelines for cholesterol treatment. \textit{(continued)}}\\
+    \toprule
+    \textbf{Country} &\textbf{Year} &\textbf{Association} &\textbf{Document} &\textbf{Immediate treatment threshold} &\textbf{Threshold after lifestyle interventions} &\textbf{Goal of therapy} &\textbf{First line treatment} &\textbf{Prediction model} \\
+    \midrule
+    \endhead 
+    Australia &2001 &NHFA/CSANZ &Lipid management guidelines &Diabetes mellitus (type-2) Familial hypercholesterolemia or combined hyperlipidemia 5-year risk $>$ 10\% LDL-C $>$ 4.0 mmol/L or TC-C $>$ 6.0 mmol/L and 2 risk factors & &LDL-C $<$ 2.5 mmol/L; &statin (any) &New Zealand cardiovascular risk calculator \\
+    Australia &2005 &NHFA/CSANZ &Position statement on lipid management &5-year risk $>$ 15\% 5-year risk $>$ 10\% and FH or metabolic syndrome & &LDL-C $<$ 2.5 mmol/L; &statin (any), can be used with fibrate if tolerated &Framingham Risk Equation \\
+    Australia &2012 &NHFA &Guidelines for the management of absolute cardiovascular disease risk &5-year risk $>$ 15\% 5-year risk $>$ 10\% and BP $>$ 160 or FH or high-risk ethnicity &5-year risk $>$ 10\% and no improvement after lifestyle &TC $<$4.0 mmol/L; HDL-C $>$1.0 mmol/L; LDL-C $<$2.0 mmol/L;  Non HDL-C $<$2.5 mmol/L; TG $<$2.0 mmol/L. &statin (any), add ezetimibe, fibrate, bile acid, or niacin if don't reach targets &Framingham Risk Equation \\
+    Australia &2012 &NHFA/CSANZ &Reducing risk in heart disease: an expert guide to clinical practice for secondary prevention of coronary heart disease. Melbourne: National Heart Foundation of Australia, 2012 & & & & & \\
+    Chile &2000 &MINSAL &Dislipidemias: División de Salud de las Personas Departamento de Programas de las Personas Programa Salud del Adulto 2000 & &LDL-C $>$ 160 mg/dL LDL-C $>$ 130 mg/dL (2+ risk factors) LDL-C $>$ 100 mg/dl and diabetes mellitus (type-2) &LDL-C $<$ 160 mg/dL LDL-C $<$ 130 mg/dL LDL-C $<$ 100 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 160 mg/dL Non-HDL-C $<$ 130 mg/dL &statins (first line) statins + ezetimibe (high risk) statins + fibrates (high triglycerides) & \\
+    Chile &2014 &MINSAL &Enfoque de riesgo para la prevención de enfermedades cardiovasculares 2014 & & & & &Framingham Risk Equation (modified) \\
+    Chile &2018 &MINSAL &Orientación Técnica Dislipidemias 2018 &LDL $>$ 190 mg/dL LDL $>$ 70 mg/dL and diabetes mellitus LDL $>$ 70 mg/dL and 10-year risk $>$ 10\% &LDL $>$ 130 mg/dL and 10-year risk $<$5 \% LDL $>$ 100 mg/dL and 10-year risk 5-9\% &LDL $<$ 160 mg/dL LDL $<$ 130 mg/dL LDL $<$ 130 mg/dL LDL $<$ 100 mg/dL &statins (first line) statins + ezetimibe (high risk failure to control) &Framingham Risk Equation (modified) \\
+    Czech Republic & & & & & & & & \\
+    Germany & & & & & & & & \\
+    Greece & & & & & & & & \\
+    Finland & & & & & & & & \\
+    Ireland & & & & & & & & \\
+    Italy & & & & & & & & \\
+    Japan &1987 &JSA &The Japanese Atherosclerosis Society Consensus Conference & &TC-C $>$ 220 mg/dL & & &None \\
+    Japan &1997 &JSA &Guidelines for Diagnosis and Treatment of Hyperlipidemia & &TC-C $>$ 220 mg/dL or LDL-C $>$ 140 mg/dL (0 risk factors) TC-C $>$ 200 mg/dL or LDL-C $>$ 120 mg/dL (1+ risk factors) &LDL-C $<$ 140 mg/dL LDL-C $<$ 120 mg/dL TC-C $<$ 220 mg/dL TC-C $<$ 200 mg/dL & &None \\
+    Japan &2002 &JSA &Guidelines for Diagnosis and Treatment of Atherosclerotic Cardiovascular Diseases & & & & &None \\
+    Japan &2007 &JSA &Guidelines for Prevention of Atherosclerotic Cardiovascular Diseases 2007 & &LDL-C $>$ 160 mg/dL LDL-C $>$ 140 mg/dL (1-2 risk factors) LDL-C $>$ 120 mg/dl (3+ risk factors) &LDL-C $<$ 160 mg/dL LDL-C $<$ 140 mg/dL LDL-C $<$ 120 mg/dL &statin &None \\
+    Japan &2012 &JSA &Comprehensive Management of Atherosclerotic Cardiovascular Diseases &LDL-C $>$ 160 mg/dL LDL-C $>$ 140 mg/dL and 10-year risk of CAD $>$ 0.5\% LDL-C $>$ 120 mg/dl and 10-year risk of CAD $>$ 2\% LDL-C $>$ 120 mg/dl and diabetes mellitus (type-2) or FH or HDL $<$ 40 mg/dl & &LDL-C $<$ 160 mg/dL LDL-C $<$ 140 mg/dL LDL-C $<$ 120 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 170 mg/dL Non-HDL-C $<$ 150 mg/dL &statins (first line) statins + ezetimibe (high risk) statins + fibrates (high triglycerides) &NIPPON DATA80 \\
+    Japan &2017 &JSA &Japan Atherosclerosis Society (JAS) Guidelines for Prevention of Atherosclerotic Cardiovascular Diseases 2017 &LDL-C $>$ 160 mg/dL LDL-C $>$ 140 mg/dL and 10-year risk of CAD $>$ 2\% LDL-C $>$ 120 mg/dl and 10-year risk of CAD $>$ 9\% LDL-C $>$ 120 mg/dl and diabetes mellitus (type-2) & &LDL-C $<$ 160 mg/dL LDL-C $<$ 140 mg/dL LDL-C $<$ 120 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 170 mg/dL Non-HDL-C $<$ 150 mg/dL & &Suita study \\
+    Poland & & & & & & & & \\
+    Slovakia & & & & & & & & \\
+    South Korea &1996 &KSo-LA 1 &Korean guidelines for the management of dyslipidemia (1st ed) & & & & & \\
+    South Korea &2003 &KSo-LA 2 &Korean guidelines for the management of dyslipidemia (2nd ed) &LDL-C $>$ 160 mg/dL LDL-C $>$ 130 mg/dL (2+ risk factors) LDL-C $>$ 100 mg/dl and diabetes mellitus (type-2) & & &statin, bile acid, fibrate, nicotinic acid & \\
+    South Korea &2009 &KSo-LA 2 (rev) &Korean revised guidelines for the management of dyslipidemia (2nd ed) &LDL-C $>$ 160 mg/dL LDL-C $>$ 130 mg/dL (2+ risk factors) LDL-C $>$ 100 mg/dl and diabetes mellitus (type-2) & &LDL-C $<$ 160 mg/dL LDL-C $<$ 130 mg/dL LDL-C $<$ 100 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 160 mg/dL Non-HDL-C $<$ 130 mg/dL &LDL-only: statin, ezetimibe, nicotinic acid, resin alone or in combination LDL + Triglyceride: fibrate (1st) nicotinic acid (2nd) & \\
+    South Korea &2015 &KSo-LA 3 &Korean guidelines for the management of dyslipidemia (3rd ed) &LDL-C $>$ 160 mg/dL LDL-C $>$ 130 mg/dL (2+ risk factors) LDL-C $>$ 100 mg/dl and diabetes mellitus (type-2) &LDL-C $>$ 130 mg/dL LDL-C $>$ 100 mg/dL (2+ risk factors) LDL-C $>$ 70 mg/dL and diabetes mellitus (type-2) &LDL-C $<$ 160 mg/dL LDL-C $<$ 130 mg/dL LDL-C $<$ 100 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 160 mg/dL Non-HDL-C $<$ 130 mg/dL &statin - titrate dose to achieve target (first line) ezetimbe, bile acid, niacin (second line or combo) & \\
+    South Korea &2018 &KSo-LA 4 &Korean guidelines for the management of dyslipidemia (4th ed) &LDL-C $>$ 160 mg/dL LDL-C $>$ 130 mg/dL (2+ risk factors) LDL-C $>$ 100 mg/dl and diabetes mellitus (type-2) &LDL-C $>$ 130 mg/dL LDL-C $>$ 100 mg/dL (2+ risk factors) LDL-C $>$ 70 mg/dL and diabetes mellitus (type-2) &LDL-C $<$ 160 mg/dL LDL-C $<$ 130 mg/dL LDL-C $<$ 100 mg/dL Non-HDL-C $<$ 190 mg/dL Non-HDL-C $<$ 160 mg/dL Non-HDL-C $<$ 130 mg/dL &statin, ezetimbe, bile acid, PCSK9-inhibitor fibrate (trigylcerides only) & \\
+    Spain & & & & & & & & \\
+    United Kingdom &1987 &BHA &Strategies for reducing coronary heart disease and desirable limits for blood lipid concentrations: guidelines of the British Hyperlipidaemia Association. &TC $>$ 6.5 mmol/L & &TC $<$ 5.2 mmol/L & &None \\
+    United Kingdom &1993 &BHA &Management of hyperlipidaemia: guidelines of the British Hyperlipidaemia Association &TC $>$ 6.5 mmol/L or LDL-C $>$ 5 mmol/L (2+ risk factors) TC $>$ 7.8 mmol/L or LDL-C $>$ 6 mmol/L & &TC $<$ 5.2 mmol/L and LDL-C $<$ 4.1 mmol/L &resin, fibrate (first line) statin (if severe) &None \\
+    United Kingdom &1998 &JBS 1 &JBS 1: Joint British Societies' guidelines on prevention of cardiovascular disease in clinical practice &10-year risk $>$ 15\% and TC $>$ 5 mmol/L Diabetes mellitus (type-2) & &TC $<$ 5.0 mmol/L or 25\% reduction LDL-C $<$ 3.0 mmol/L or 30\% reduction &statin RCT dose only (first line) bile acid or niacin (second line) &JBS risk chart \\
+    United Kingdom &2005 &JBS 2 &JBS 2: Joint British Societies' guidelines on prevention of cardiovascular disease in clinical practice &10-year risk $>$ 20\% and TC $>$ 4 mmol/L or LDL-C $>$ 2 mmol/L TC:HDL ratio $>$ 6 Diabetes mellitus (type-2) & &TC $<$ 4.0 mmol/L or 25\% reduction LDL-C $<$ 2.0 mmol/L or 30\% reduction &statin (first line) bile acid or niacin or fibrate (second line) &JBS risk chart \\
+    United Kingdom &2008 &NICE &Lipid modification: Cardiovascular risk assessment and the modification of blood lipids for the primary and secondary prevention of cardiovascular disease &10-year risk $>$ 20\% Diabetes mellitus (type-2) & &TC $<$ 4.0 mmol/L or 25\% reduction LDL-C $<$ 2.0 mmol/L or 30\% reduction &simvastatin 40 mg (primary or secondary, stable) simvastatin 80 mg (failure to reach target or secondary, unstable) &Framingham Risk Equation \\
+    United Kingdom &2014 &NICE &Cardiovascular disease: risk assessment and reduction, including lipid modification &10-year risk‡ $>$ 10\% or CKD diabetes mellitus (type-2) and 10-year risk‡ $>$ 10\% diabetes mellitus (type-1), $>$40 years-old, duration $>$10 years & &40\% reduction in non-HDL cholesterol &atorvastatin 20 mg (primary) atorvastatin 80 mg (secondary) &QRISK2 \\
+    United States of America &1988 &NCEP ATP I &Report of the National Cholesterol Education Program Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. The Expert Panel &LDL $>$ 190 mg/dL (0-1 risk factors) LDL $>$ 160 mg/dL and 2+ risk factors & &LDL $<$ 160 mg/dL LDL $<$ 130 mg/dL &bile acid and nicotinic acid (first line), statins (second line) &None \\
+    United States of America &1994 &NCEP ATP II &Second Report of the Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel II). &LDL $>$ 190 mg/dL (0-1 risk factors) LDL $>$ 160 mg/dL and 2+ risk factors & &LDL $<$ 160 mg/dL LDL $<$ 130 mg/dL &bile acid, nicotinic acid, statins, fibrates (first line) &None \\
+    United States of America &2004 &NCEP ATP III &Third Report of the National Cholesterol Education Program (NCEP) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel III) Final Report &LDL $>$ 190 mg/dL (0-1 risk factors) LDL $>$ 160 mg/dL and 10-year risk* $<$ 10\% (2+ risk factors) LDL $>$ 130 mg/dL and 10-year risk* $>$ 10\% (2+ risk factors) LDL $>$ 100 mg/dL and 10-year risk* $>$ 20\% & &LDL $<$ 160 mg/dL LDL $<$ 130 mg/dL LDL $<$ 130 mg/dL LDL $<$ 100 mg/dL &statin - simvastatin, lovastatin, pravastatin, fluvastatin, atorvastatin (first line), bile acid, nicotinic acid, fibrates (second line) &Framingham Risk Equation \\
+    United States of America &2013 &AHA/ACC &2013 ACC/AHA Guideline on the Treatment of Blood Cholesterol to Reduce Atherosclerotic Cardiovascular Risk in Adults: A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines &LDL $>$ 190 mg/dL LDL $>$ 70 mg/dL and 10-year risk $>$ 7.5\% LDL $>$ 70 mg/dL and diabetes mellitus & &No treatment targets, high-intensity statin if LDL $>$ 190 mg/dL, other cases could use moderate or high-intensity statin &Low: simvastatin 10 mg, pravastatin 10-20 mg, lovastatin 20 mg, fluvastatin 20-40 mg Moderate: atorvastatin 10-20 mg, rosuvastatin 5-10 mg, simvastatin 20-40 mg, pravastatin 40-80 mg, lovastatin 40-80 mg, fluvastatin XL 80 mg, fluvastatin 40 mg, pitavastatin 1-4 mg High: atorvastatin 40-80 mg, rosuvastatin 20-40 mg &Pooled Cohort Equations \\
+    United States of America &2018 &AHA/ACC &Guideline on management of blood cholesterol: A report of the American College of Cardiology &LDL $>$ 190 mg/dL LDL $>$ 70 mg/dL and 10-year risk $>$ 7.5\% 10-year risk $>$ 7.5\% + risk enhancing factors LDL $>$ 70 mg/dL and diabetes mellitus & &LDL $<$ 100 mg/dL LDL reduced 30\% to 49\% LDL reduced $>$ 50\% LDL reduced $>$ 50\% &Low: simvastatin 10 mg, pravastatin 10-20 mg, lovastatin 20 mg, fluvastatin 20-40 mg Moderate: atorvastatin 10-20 mg, rosuvastatin 5-10 mg, simvastatin 20-40 mg, pravastatin 40-80 mg, lovastatin 40-80 mg, fluvastatin XL 80 mg, fluvastatin 40 mg, pitavastatin 1-4 mg High: atorvastatin 40-80 mg, rosuvastatin 20-40 mg &Pooled Cohort Equations \\
+    Europe &1988 &EAS & & & & & & \\
+    Europe &1994 &ESC/EAS &Prevention of coronary heart disease in clinical practice: recommendations of the Task Force of the European Society of Cardiology, European Atherosclerosis Society and European Society of Hypertension & &TC-C $>$ 9 mmol/L TC-C $>$ 8 mmol/L and 10-year risk of CHD $>$ 20\% & &bile acid sequestrants (resins), HMG CoA reductase inhibitors (statins), nicotinic acid and its derivatives, and tibric acid derivatives (fibrates). &Framingham Risk Equation (modified) \\
+    Europe &1998 &ESC/EAS &Prevention of coronary heart disease in clinical practice: Recommendations of the Second Joint Task Force of European and other Societies on Coronary Prevention & &TC-C $>$ 5 mmol/L and/or LDL-C $>$ 3 mmol/L and 10-year risk of CHD $>$ 20\% &TC $<$ 5.0 mmol/L and LDL-C $<$ 3.0 mmol/L &statins (first) &Framingham Risk Equation (modified) \\
+    Europe &2003 &ESC/EAS &European guidelines on cardiovascular disease prevention in clinical practice: third joint task force of European and other societies on cardiovascular disease prevention in clinical practice (constituted by representatives of eight societies and by invited experts). & &TC-C $>$ 8 mmol/L and/or LDL-C $>$ 6 mmol/L TC-C $>$ 5 mmol/L and/or LDL-C $>$ 3 mmol/L and 10-year risk of CVD $>$ 5\% Diabetes mellitus (type 1 or type 2) &TC $<$ 5.0 mmol/L and LDL-C $<$ 3.0 mmol/L TC $<$ 4.5 mmol/L and LDL-C $<$ 2.5 mmol/L if diabetes or resistant to lifestyle &statins (first) &Score \\
+    Europe &2008 &ESC/EAS &European guidelines on cardiovascular disease prevention in clinical practice: Fourth Joint Task Force of the European Society of Cardiology and other societies & &TC-C $>$ 8 mmol/L and/or LDL-C $>$ 6 mmol/L TC-C $>$ 5 mmol/L and/or LDL-C $>$ 3 mmol/L and 10-year risk of CVD $>$ 5\% Diabetes mellitus (type 1 or type 2) &TC $<$ 4.5 mmol/L and LDL-C $<$ 2.5 mmol/L TC $<$ 4.0 mmol/L and LDL-C $<$ 2.0 mmol/L (if feasible) &statins (first) bile acid or niacin (second) combo therapy if target not reached &Score \\
+    Europe &2011 &ESC/EAS &ESC/EAS Guidelines for the management of dyslipidaemias: The Task Force for the management of dyslipidaemias of the European Society of Cardiology (ESC) and the European Atherosclerosis Society (EAS) &LDL $>$ 100 mg/dL and 10-year risk† $>$ 5\% LDL $>$ 70 mg/dL and 10-year risk† $>$ 10\% LDL $>$ 2.5 mmol/L and 10-year risk† $>$ 5\% LDL $>$ 1.8 mmol/L and 10-year risk† $>$ 10\% &LDL $>$ 190 mg/dL LDL $>$ 100 mg/dL and 10-year risk† $>$ 1\% &LDL $<$ 116 mg/dL LDL $<$ 100 mg/dL LDL reduced $>$ 50\% or $<$ 70 mg/dL LDL reduced $>$ 50\% or $<$ 55 mg/dL &statins (first) up to highest recommended dose to reach target bile acid or niacin (second) combo therapy if target not reached &Score \\
+    Europe &2016 &ESC/EAS &2016 European Guidelines on cardiovascular disease prevention in clinical practice: The Sixth Joint Task Force of the European Society of Cardiology and Other Societies on Cardiovascular Disease Prevention in Clinical Practice (constituted by representatives of 10 societies and by invited experts) Developed with the special contribution of the European Association for Cardiovascular Prevention \& Rehabilitation (EACPR) &LDL $>$ 100 mg/dL and 10-year risk† $>$ 5\% LDL $>$ 70 mg/dL and 10-year risk† $>$ 10\% LDL $>$ 2.6 mmol/L and 10-year risk† $>$ 5\% LDL $>$ 1.8 mmol/L and 10-year risk† $>$ 10\% &LDL $>$ 190 mg/dL and 10-year risk† $<$ 1\% LDL $>$ 100 mg/dL and 10-year risk† $>$ 1\% LDL $>$ 70 mg/dL and 10-year risk† $>$ 5\% 10-year risk† $>$ 10\% LDL $>$ 4.9 mmol/L and 10-year risk† $<$ 1\% LDL $>$ 2.6 mmol/L and 10-year risk† $>$ 1\% LDL $>$ 1.8 mmol/L and 10-year risk† $>$ 5\% 10-year risk† $>$ 10\% &LDL $<$ 116 mg/dL LDL $<$ 100 mg/dL LDL reduced $>$ 50\% or $<$ 70 mg/dL LDL reduced $>$ 50\% or $<$ 55 mg/dL LDL $<$ 3 mmol/L LDL $<$ 2.6 mmol/L LDL reduced $>$ 50\% or $<$ 1.8 mmol/L LDL reduced $>$ 50\% or $<$ 1.4 mmol/L &statins (first) up to highest recommended dose to reach target bile acid or niacin (second) combo therapy with ezetimibe if target not reached &Score \\
+    Europe &2019 &ESC/EAS &Guidelines for the management of dyslipidaemias: lipid modification to reduce cardiovascular risk The Task Force for the management of dys lipidaemias of the European Society of Cardiology (ESC) and European Atherosclerosis Society (EAS) &LDL $>$ 190 mg/dL and 10-year risk† $<$ 1\% LDL $>$ 190 mg/dL and 10-year risk† $>$ 1\% LDL $>$ 100 mg/dL and 10-year risk† $>$ 5\% LDL $>$ 70 mg/dL and 10-year risk† $>$ 10\% LDL $>$ 4.9 mmol/L and 10-year risk† $<$ 1\% LDL $>$ 4.9 mmol/L and 10-year risk† $>$ 1\% LDL $>$ 2.6 mmol/L and 10-year risk† $>$ 5\% LDL $>$ 1.8 mmol/L and 10-year risk† $>$ 10\% &LDL $>$ 160 mg/dL and 10-year risk† $<$ 1\% LDL $>$ 100 mg/dL and 10-year risk† $>$ 1\% LDL $>$ 70 mg/dL and 10-year risk† $>$ 5\% 10-year risk† $>$ 10\% LDL $>$ 3.0 mmol/L and 10-year risk† $<$ 1\% LDL $>$ 2.6 mmol/L and 10-year risk† $>$ 1\% LDL $>$ 1.8 mmol/L and 10-year risk† $>$ 5\% 10-year risk† $>$ 10\% &LDL $<$ 116 mg/dL LDL $<$ 100 mg/dL LDL reduced $>$ 50\% or $<$ 70 mg/dL LDL reduced $>$ 50\% or $<$ 55 mg/dL LDL $<$ 3 mmol/L LDL $<$ 2.6 mmol/L LDL reduced $>$ 50\% or $<$ 1.8 mmol/L LDL reduced $>$ 50\% or $<$ 1.4 mmol/L &statins (first) up to highest recommended dose to reach target bile acid or niacin (second) combo therapy with ezetimibe if target not reached &Score \\
+    \bottomrule
+\end{longtable}
+}
+    % \begin{table}[H]
+    %     \centering
+    %     \caption{Cholesterol treatment guidelines and recommendations for primary prevention.}
+    %     \tiny{
+    %     \begin{threeparttable}
+    %     \begin{tabular}{llll}
+    %         \toprule
+    %         Source & Year & Treatment recommendation & Goal of therapy\\
+    %         \midrule  
+    %         %  \hline
+    %         NHLBI NCEP ATP III \cite{noauthor_third_2002} & 2013 & LDL $\geq 100$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 20\%  & LDL $$<$$ 100 mg/dL \\
+    %         & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 10\% (2+ risk factors) & LDL $$<$$ 130 mg/dL  \\
+    %         & & LDL $\geq 160$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $$<$$ 10\% (2+ risk factors) & LDL $$<$$ 130 mg/dL  \\
+    %         & & LDL $\geq 190$ mg/dL (0-1 risk factors) & LDL $$<$$ 160 mg/dL \\
+    %         & & & \\
+    %         %  \hline
+    %         AHA/ACC Statement \cite{grundy_scott_m_2018_2019} & 2018 & LDL $\geq 190$ mg/dL (severe hypercholesterolemia) & LDL $$<$$ 100 mg/dL \\
+    %         & & LDL $\geq 70$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 7.5\%  & LDL reduced 30\% to 49\%\\
+    %         & & LDL $\geq 70$ mg/dL and 10-year risk\tnote{*} \hspace{1pt}  $\geq$ 20\% & LDL reduced $\geq$ 50\%\\
+    %         & & LDL $\geq 70$ mg/dL and diabetes mellitus & LDL reduced $\geq$ 50\% \\
+    %         & & & \\
+    %         ESC/EAS Guidelines \cite{mach_2019_2020} & 2019 & LDL $\geq 70$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt} $\geq$ 10\% (very-high) & LDL reduced $\geq$ 50\% or $$<$$ 55 mg/dL \\
+    %         & & LDL $\geq 100$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt}  $\geq$ 5\% (high) & LDL reduced $\geq$ 50\% or $$<$$ 70 mg/dL \\
+    %         & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt}  $\geq$ 1\% (moderate) & LDL $$<$$ 100 mg/dL \\
+    %         & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\textdagger} \hspace{1pt} $$<$$ 1\% (low) & LDL $$<$$ 116 mg/dL \\
+    %         & & & \\
+    %         NICE Guidelines \cite{rabar_lipid_2014} & 2014 & 10-year risk\tnote{\ddag} \hspace{1pt} $\geq$ 10\% or CKD &  \\
+    %         & & diabetes mellitus (type-2) and 10-year risk\tnote{\ddag} \hspace{1pt} $\geq$ 10\% &  \\
+    %         & & diabetes mellitus (type-1), $>$40 years-old, duration $>$10 years &  \\
+    %         & & & \\
+    %         CCS Guidelines \cite{anderson_2012_2013} & 2012 & LDL $\geq 75$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 20\% & LDL $$<$$ 75 mg/dL \\
+    %         & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 10\% & LDL $$<$$ 130 mg/dL \\
+    %         & & LDL $\geq 130$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 5\% (optional) & LDL $$<$$ 190 mg/dL \\
+    %         & & LDL $\geq 190$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt} $$<$$ 1\% & LDL $$<$$ 190 mg/dL \\
+    %         & & & \\
+    %         China Guidelines \cite{anderson_2012_2013} & 2016 & 10-year risk\tnote{$||$} \hspace{1pt} $\geq$ 10\% & LDL $$<$$ 130 mg/dL \\
+    %         & & 10-year risk\tnote{$||$} \hspace{1pt} $\geq$ 5\% & LDL $$<$$ 130 mg/dL \\
+    %         & & diabetes mellitus and LDL $\geq 70$ mg/dL or TC $\geq 120$ & LDL $$<$$ 100 mg/dL \\
+    %         & & LDL $\geq 190$ mg/dL or TC $\geq 280$ & LDL $$<$$ 100 mg/dL \\
+    %         & & & \\
+    %         Brazil Guidelines \cite{anderson_2012_2013} & 2013 & 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 10\% (women) $\geq$ 20\% (men) & LDL $$<$$ 100 mg/dL \\
+    %         & & diabetes mellitus or CKD or FH & LDL $$<$$ 70 mg/dL \\
+    %         & & & \\
+    %         South Africa Guidelines \cite{anderson_2012_2013} & 2012 & 10-year risk\tnote{\S} \hspace{1pt} $\geq$ 30\% (very high) & LDL $$<$$ 70 mg/dL \\
+    %         & & LDL $\geq 100$ mg/dL and 10-year risk\tnote{\S} \hspace{1pt}  $\geq$ 15\% (high) & LDL $$<$$ 100 mg/dL \\
+    %         & & diabetes mellitus or CKD or FH & LDL $$<$$ 70 mg/dL \\
+    %         & & & \\
+    %         WHO Guidelines \cite{anderson_2012_2013} & 2007 & TC $\geq$ 320 mg/dL or LDL $\geq$ 240 mg/dL or TC/HDL ratio $>$ 8 & LDL $$<$$ 77 mg/dL or TC $$<$$ 152 mg/dL \\
+    %         & & diabetes mellitus & LDL $$<$$ 77 mg/dL or TC $$<$$ 152 mg/d  \\
+    %         & & 10-year risk\tnote{\P} \hspace{1pt} $\geq$ 30\% & LDL $$<$$ 77 mg/dL or TC $$<$$ 152 mg/dL \\
+    %         & & LDL $\geq 115$ mg/dL or TC $\geq 193$ mg/dL and 10-year risk\tnote{\P} \hspace{1pt}  $\geq$ 20\% & LDL $$<$$ 100 mg/dL \\
+    %         \bottomrule
+    %     \end{tabular}
+    %     \begin{tablenotes}
+    %         \item[*] Based on Pooled Cohort Equations
+    %         \item[\textdagger] Based on SCORE
+    %         \item[\ddag] Based on QRISK2
+    %         \item[\S] Based on Framingham Risk Score
+    %         \item[$||$] Based on CMCS re-callibration
+    %         \item[\P] Based on WHO/ISH risk charts
+    %     \end{tablenotes}
+    %     \end{threeparttable}
+    %     }
+    %     \label{tab:guidelines}
+    % \end{table}
+
+\end{landscape}
+    
+    \newpage
+
+    \subsection{Calibrating Non-HDL-C to LDL-C}
+    In this study, we use non-HDL-C to define those who are elligible for treatment with lipid-lowering drugs as well as those whose serum cholesterol levels are ``controlled''. However, most national guidelines use LDL-C targets rather than non-HDL-C. We chose to use non-HDL-C because many surveys, especially those conducted several decades ago, did not measure LDL-C or did not measure the necessary components\footnote{Roughly speaking total cholesterol is composed of HDL-C, LDL-C, and Triglycerides} to calculate LDL-C. In the main text, we use a correction factor to convert LDL-C targets in guidelines to non-HDL-C derived from more recent guidelines in Europe and North America. 
+    
+    Here, we validate this correction factor in our sample by examining the relationship between non-HDL-C and LDL-C among studies in which both were measured (N = 198,761 observations). Figure \ref{fig:callibration} below plots non-HDL-C levels versus LDL-C levels. We fit both a linear as well as a more flexbile GAM regression model to the data and find evidence that the relationship is linear across the full range. We find a high degree of linear correlation between non-HDL-C and LDL-C ($\rho = 0.916$) with an estimated bias/correction factor of 0.53 mmol/L (25.2 mg/dL) which compares favorably with the value of 0.78 mmol/L (30 mg/dL) commonly cited in guidelines.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../3_figures/figS1_calibration.pdf}
+    \caption{Callibrating non-HDL-C levels with LDL-C among those surveys which collected data on both.}
+    \label{fig:callibration}
+    \end{figure}
+
+    \newpage 
+
+    \subsection{Calculation of risk scores} \label{sec:risk_scores}
+    For risk-based guidelines about treatment eligibility, we used Globorisk \cite{hajifathalian_novel_2015} to calculate risk scores for all individuals with complete risk factor data. Globorisk is a cardiovascual disease risk prediction equation that can be recalibrated and updated for use in different countries with routinely available information. Currently it supports risk estimates for 182 countries from 2000 to 2020 \cite{ueda_laboratory-based_2017}. Coefficients were estimated in original study using Cox propostional hazards model with age as the time scale (therefore $t$ denotes age in years). Thus the risk equation is of the form: 
+    
+    \begin{align*}
+        h(t \mid& sex, sbp, tc, dm, smk) = h_0(t) \exp\big\{ \\
+        &\quad \beta_1 (sbp - \overline{sbp}) + \beta_2 (tc - \overline{tc}) + \beta_3 (dm - \overline{dm}) + \beta_4 (smk - \overline{smk}) + \beta_5 (dm - \overline{dm}) \times sex
+        \\ &\quad + \beta_6 (smk - \overline{smk}) \times sex + \beta_7 (sbp - \overline{sbp}) \times t + \beta_8 (tc - \overline{tc}) \times t + \beta_9 (dm - \overline{dm}) \times t
+        \\ &\quad  + \beta_{10} (smk - \overline{smk}) \times t \\
+        \big\}
+    \end{align*}
+    where $(\beta_1, \ldots, \beta_{10})$ are constant across countries but the mean risk factor levels $(\overline{sbp}, \ldots, \overline{smk}$) and baseline hazard $h_0(t)$ are country- and year-specific and thus can be re-callibrated to local conditions. The values of $(\beta_1, \ldots, \beta_{10})$ are provided in table below.
+    \begin{table}[H]
+        \centering
+        \caption{Coefficient values for Globorisk risk equations.}
+        \label{tab:coefs}
+        \begin{tabular}[t]{cc}
+            \toprule
+            Coefficient & Estimate  \\
+            \midrule
+            $\beta_1$ & 0.3070129 \\
+            $\beta_2$ & 0.6149061 \\
+            $\beta_3$ & 1.475305 \\
+            $\beta_4$ & 1.846684 \\
+            $\beta_5$ & 0.4050458 \\
+            $\beta_6$ & 0.3253832 \\
+            $\beta_7$ & -0.002247118 \\
+            $\beta_8$ & -0.006865652 \\
+            $\beta_9$ & -0.01320953 \\
+            $\beta_{10}$ & -0.02205285 \\
+            \bottomrule
+            \end{tabular}
+    \end{table}
+    The country- and year-specific values of risk factors $(\overline{sbp}, \ldots, \overline{smk}$) and the baseline hazard $h_0(t)$ were the same as those used in a prior study \cite{ueda_laboratory-based_2017}. Values for both do not exist prior to the year 2000, so for the period 1990-2000 we use values from 2000.  The estimated risk for each subject is calculated as 10-year cumulative incidence based on the formula
+    \begin{equation*}
+        CI = 1 - \prod_{t=0}^T\exp\{h(t \mid sex, sbp, tc, dm, smk)\}.
+    \end{equation*}
+    All calculations were performed using the \texttt{globorisk} package \cite{boyer_globorisk_2022} in R. For reference, below are the trends in mean risk score by country, sex, and age group. 
+
+    \begin{figure}[hp]
+        \centering
+        \includegraphics[width=\textwidth]{../3_figures/risk.pdf}
+        \caption{Trends in mean risk score by country, sex, and age group.}
+        \label{fig:globorisk}
+    \end{figure}
+    
+%    \subsection{Sensitivity analyses}
+
+    \newpage
+    \subsection{Linear trend regressions}
+
+    \begin{landscape}
+        \begin{table}
+            \input{../2_tables/chol_regs.tex}
+        \end{table}
+
+        \begin{table}
+            \input{../2_tables/treat_regs.tex}
+        \end{table}
+    \end{landscape}
+    
+
+
+
+    
+    \begin{landscape}
+        \subsection{Example distributional changes}
+
+        \begin{figure}[H]
+            \centering
+            \caption{Changes in distribution of Non-HDL-C in United States by sex and age group.}
+            \includegraphics[width=\linewidth]{../3_figures/figS4_densities.pdf}
+            \label{fig:densities}
+        \end{figure}
+
+        \subsection{Additional results}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/nonhdl.pdf}
+            \caption{Trends in mean serum non-HDL-C levels in total population by sex and age group.}
+            \label{fig:mean_chol}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/nonhdl_untreated.pdf}
+            \caption{Trends in mean serum non-HDL-C levels in untreated population by sex and age group.}
+            \label{fig:nonhdl_untreated}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/tc.pdf}
+            \caption{Trends in mean serum TC-C levels in total population by sex and age group.}
+            \label{fig:tc}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/hdl.pdf}
+            \caption{Trends in mean serum HDL-C levels in total population by sex and age group.}
+            \label{fig:hdl}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/ldl.pdf}
+            \caption{Trends in mean serum LDL-C levels in total population by sex and age group.}
+            \label{fig:ldl}
+        \end{figure}
+
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/treated_pop.pdf}
+            \caption{Trends in treatment coverage in total population by sex and age group.}
+            \label{fig:treated_pop}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/controlled_pop.pdf}
+            \caption{Trends in controlled serum cholesterol levels in total population by sex and age group.}
+            \label{fig:controlled_pop}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/controlled_treated.pdf}
+            \caption{Trends in controlled serum cholesterol levels among those receiving treatment by sex and age group.}
+            \label{fig:controlled_treated}
+        \end{figure}
+
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/diab.pdf}
+            \caption{Trends in diabetes prevalence by sex and age group.}
+            \label{fig:diab}
+        \end{figure}
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/smoke.pdf}
+            \caption{Trends in smoking prevalence by sex and age group.}
+            \label{fig:smoker}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/risk.pdf}
+            \caption{Trends in mean risk score by sex and age group.}
+            \label{fig:smoker}
+        \end{figure}
+
+        \subsection{Country-specific estimates of prevalence of elevated cholesterol, and proportion treated and control, by age and sex between 2000-2020}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_australia.pdf}
+            \caption{Australia}
+            \label{fig:australia}
+        \end{figure}
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_chile.pdf}
+            \caption{Chile}
+            \label{fig:chile}
+        \end{figure}
+    
+        % \begin{figure}[H]
+        %     \centering
+        %     \includegraphics[width=\linewidth]{../3_figures/countries/fig_costa rica.pdf}
+        %     \caption{Costa Rica}
+        %     \label{fig:costa_rica}
+        % \end{figure}
+    
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_czech republic.pdf}
+            \caption{Czech Republic}
+            \label{fig:czechia}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_finland.pdf}
+            \caption{Finland}
+            \label{fig:finland}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_greece.pdf}
+            \caption{Greece}
+            \label{fig:greece}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_ireland.pdf}
+            \caption{Ireland}
+            \label{fig:ireland}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_italy.pdf}
+            \caption{Italy}
+            \label{fig:italy}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_poland.pdf}
+            \caption{Poland}
+            \label{fig:poland}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_slovakia.pdf}
+            \caption{Slovakia}
+            \label{fig:slovakia}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_south korea.pdf}
+            \caption{South Korea}
+            \label{fig:korea}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_spain.pdf}
+            \caption{Spain}
+            \label{fig:spain}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_united kingdom.pdf}
+            \caption{United Kingdom}
+            \label{fig:uk}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{../3_figures/countries/fig_united states of america.pdf}
+            \caption{United States of America}
+            \label{fig:usa}
+        \end{figure}
+    \end{landscape}
+
+    \subsection{Sensitivity Analyses}
+    \begin{singlespace}
+        \input{../2_tables/sensitivity_national.tex}
+    \end{singlespace}
+
+    \clearpage
+
+    \begin{singlespace}
+        \input{../2_tables/control_sensitivity.tex}
+    \end{singlespace}
+    \clearpage
+    % \subsection{Missing cholesterol data}
+    % \begin{singlespace}
+    %     \input{../2_tables/missing_chol_data.tex}
+    %     \label{tab:missing_chol_data}
+    % \end{singlespace}
+
+    % \newpage
+    
+    % \subsection{Missing smoking data}
+    % \begin{singlespace}
+    %     \input{../2_tables/missing_smk_data.tex}
+    %     \label{tab:missing_smk_data}
+    % \end{singlespace}
+    %\printbibliography
+    %\bibliography{Placeholder}
+\end{refsection}
+\printbibliography[section=2,resetnumbers=true]
+        
+
+\end{appendix}
+
+
+\end{document}

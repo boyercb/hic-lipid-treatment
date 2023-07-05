@@ -32,6 +32,8 @@ hic <-
     smoker = replace(smoker, Country == "United States of America" & is.na(smoker), 0),
     # unknown issues with smoking data (remove)
     smoker = replace(smoker, id_study %in% c("DEU_2007_HNRS", "AUS_1989_RFPS"), 0),
+    # replace diabetes diagnosis if missing but have drug info
+    self_diab = ifelse(!is.na(drug_diab_final) & is.na(self_diab), drug_diab_final, self_diab),
     # recode ‘drug_chol == NA & self_chol == 0’ to ‘drug_chol = 0’
     drug_chol = replace(drug_chol, id_study == "AUS_2012_AusDiab" & is.na(drug_chol) & self_chol == 0, 0),
     # consider all ‘drug_chol == NA’ as ‘drug_chol = 0’ for the following 
@@ -40,6 +42,7 @@ hic <-
                            str_detect(id_study, "(GBR_[0-9]+_NDNS)|(USA_[0-9]+_NHANES)")) & 
                           is.na(drug_chol), 
                         0),
+    # replace if no generic drug indicator, but there is statin data
     drug_chol = ifelse(is.na(drug_chol) & !is.na(drug_chol_stat), drug_chol_stat, drug_chol),
     drug_chol = ifelse(is.na(drug_chol) & drug_chol_fibr == 1 & drug_chol_stat == 0, drug_chol_fibr, drug_chol)
   )

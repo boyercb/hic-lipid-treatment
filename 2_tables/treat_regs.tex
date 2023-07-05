@@ -1,0 +1,30 @@
+
+\begin{tabular}[t]{lccccccccc}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{Overall} & \multicolumn{3}{c}{By gender} & \multicolumn{3}{c}{By age} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7} \cmidrule(l{3pt}r{3pt}){8-10}
+  & Eligible & Treated & Controlled & Eligible  & Treated  & Controlled  & Eligible   & Treated   & Controlled  \\
+\midrule
+woman & \num{0.054}+ & \num{-0.001} & \num{0.064}** & \num{-4.405}+ & \num{-2.903} & \num{5.757}* & \num{0.054}* & \num{-0.001} & \num{0.064}**\\
+ & (\num{0.025}) & (\num{0.017}) & (\num{0.015}) & (\num{2.432}) & (\num{3.259}) & (\num{2.529}) & (\num{0.024}) & (\num{0.017}) & (\num{0.015})\\
+age 50-59 & \num{0.093}*** & \num{0.055}** & \num{-0.134}*** & \num{0.094}*** & \num{0.055}** & \num{-0.135}*** & \num{-8.135}* & \num{-9.696}*** & \num{2.951}\\
+ & (\num{0.019}) & (\num{0.013}) & (\num{0.020}) & (\num{0.019}) & (\num{0.013}) & (\num{0.020}) & (\num{2.755}) & (\num{1.919}) & (\num{2.529})\\
+age 60-69 & \num{0.163}*** & \num{0.131}*** & \num{-0.235}*** & \num{0.164}*** & \num{0.132}*** & \num{-0.236}*** & \num{-16.985}** & \num{-21.968}*** & \num{3.179}\\
+ & (\num{0.025}) & (\num{0.016}) & (\num{0.029}) & (\num{0.025}) & (\num{0.016}) & (\num{0.029}) & (\num{4.994}) & (\num{3.866}) & (\num{4.078})\\
+age 70-79 & \num{0.087} & \num{0.124}* & \num{-0.290}*** & \num{0.088} & \num{0.125}* & \num{-0.291}*** & \num{-8.668} & \num{-20.106}* & \num{2.132}\\
+ & (\num{0.063}) & (\num{0.046}) & (\num{0.034}) & (\num{0.063}) & (\num{0.045}) & (\num{0.034}) & (\num{8.864}) & (\num{8.320}) & (\num{4.622})\\
+year & \num{0.031}*** & \num{0.022}*** & \num{-0.007}*** & \num{0.030}*** & \num{0.022}*** & \num{-0.005}*** & \num{0.026}*** & \num{0.015}*** & \num{-0.005}+\\
+ & (\num{0.004}) & (\num{0.003}) & (\num{0.001}) & (\num{0.003}) & (\num{0.003}) & (\num{0.001}) & (\num{0.004}) & (\num{0.003}) & (\num{0.002})\\
+year $\times$ woman &  &  &  & \num{0.002}+ & \num{0.001} & \num{-0.003}* &  &  & \\
+ &  &  &  & (\num{0.001}) & (\num{0.002}) & (\num{0.001}) &  &  & \\
+year $\times$ age 50-59 &  &  &  &  &  &  & \num{0.004}* & \num{0.005}*** & \num{-0.002}\\
+ &  &  &  &  &  &  & (\num{0.001}) & (\num{0.001}) & (\num{0.001})\\
+year $\times$ age 60-69 &  &  &  &  &  &  & \num{0.009}** & \num{0.011}*** & \num{-0.002}\\
+ &  &  &  &  &  &  & (\num{0.002}) & (\num{0.002}) & (\num{0.002})\\
+year $\times$ age 70-79 &  &  &  &  &  &  & \num{0.004} & \num{0.010}* & \num{-0.001}\\
+ &  &  &  &  &  &  & (\num{0.004}) & (\num{0.004}) & (\num{0.002})\\
+\midrule
+Observations & \num{81855} & \num{81855} & \num{81855} & \num{81855} & \num{81855} & \num{81855} & \num{81855} & \num{81855} & \num{81855}\\
+Country FE & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes & Yes\\
+\bottomrule
+\end{tabular}

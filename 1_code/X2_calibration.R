@@ -1,7 +1,12 @@
 g <- ggplot(hic, aes(x = ldl_cleaned, y = nonhdl)) +
-  geom_hex(bins = 200, na.rm = TRUE) +
+  geom_hex(bins = 150, na.rm = TRUE) +
   scale_fill_distiller() +
-  # scale_color_distiller() +
+  # scale_color_distiller(guide = "none") +
+  scale_color_manual(
+    name = "",
+    values = c("pink", "red"),
+    aesthetics = c("color", "color")
+  ) +
   geom_smooth(
     mapping = aes(color = "gam"),
     method = "gam",
@@ -11,11 +16,6 @@ g <- ggplot(hic, aes(x = ldl_cleaned, y = nonhdl)) +
     mapping = aes(color = "linear"),
     method = "lm",
     se = FALSE
-  ) +
-  scale_color_manual(
-    name = "",
-    values = c("pink", "red"),
-    aesthetics = c("color", "color")
   ) +
   annotate(
     "text",

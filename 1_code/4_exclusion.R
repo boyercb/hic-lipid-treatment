@@ -71,7 +71,7 @@ c2 <-
          ')')
 d2 <-
   paste0(
-    'Missing values on\nTC or HDL-C\n(N = ',
+    'Missing values of\nTC or HDL-C\n(N = ',
     format(exclude_missing_chol, big.mark = ","),
     ')'
   )

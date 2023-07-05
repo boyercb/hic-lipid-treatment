@@ -15,13 +15,22 @@
     caption,
     % natbib,
     pdflscape,
+    tcolorbox,
     subfigure,
+    subfiles,
+    titling,
     array,
     hyperref,
+    soul,
+    changepage,
     booktabs,
     longtable,
     float,
-    threeparttable}
+    lmodern,
+    microtype,
+    % chronology,
+    threeparttable,
+    threeparttablex}
 
 \usepackage[
     backend=biber,
@@ -32,7 +41,9 @@
     url=false,
     eprint=false
 ]{biblatex}
-
+\usepackage{cleveref}
+\usepackage[utf8]{inputenc} % usually not needed (loaded by default)
+\usepackage[T1]{fontenc}
 \AtEveryBibitem{%
   \clearfield{note}%
 }
@@ -41,7 +52,7 @@
 
 \usepackage{siunitx}
 \newcolumntype{d}{S[input-symbols = ()]}
-
+% \usepackage{chronology}
 \normalem
 
 \onehalfspacing
@@ -60,5 +71,7 @@
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
-
+\appto\bibfont{\setlength{\emergencystretch}{.5em}}
+\newtcolorbox[auto counter]{mybox}[2][]{float,title={Box~\thetcbcounter: #2},#1}
+\subsubsectionfont{\normalfont\itshape}
 \geometry{left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}

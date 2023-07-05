@@ -1,5 +1,5 @@
 # read in data from high income countries from Bin
-hic <- read_rds("0_data/Selected studies with TC and HDL or LDL and treatment_20220424.RDS")
+hic <- read_rds("0_data/Selected studies with TC and HDL or LDL and treatment_20230628.RDS")
 hic <- as_tibble(hic)
 
 # read in meta-data for all NCDRisC surveys
@@ -16,6 +16,7 @@ drop_list <- c(
   # "GBR_2016_NDNS", 
   # "GBR_2018_NDNS", 
   "GBR_2015_NSHD",      # longitudinal birth cohort among those born in 1948
+  "GBR_2017_BCS70",     # longitudinal birth cohort among those born in 1970
   "FIN_2001_YFS_rural", # no one in age range 40 - 79 
   "FIN_2001_YFS_urban",
   "CRI_2005_CRELES",    # Costa Rica (not high income)
@@ -25,7 +26,7 @@ drop_list <- c(
   "CRI_2014_CRFS",
   "MEX_2006_ENSANUT",   # Mexico (not high income)
   "MEX_2019_ENSANUT", 
-  "MLT_2015_SAHHTEK",   # weird values
+  # "MLT_2015_SAHHTEK",   # weird values
   "PER_2005_ENIN",      # Peru (not high income)
   "PER_2018_VIANEV", 
   "ROU_2012_SEPHAR",    # Romania (no longer high income)
@@ -36,6 +37,7 @@ hic <- filter(hic, !id_study %in% drop_list)
 
 hic <- 
   hic %>%
+  filter(mid_year >= 1990) %>%
   mutate(
     Country = replace(Country, id_study == "GBR_1987_DNS", "United Kingdom"),
     Country = replace(Country, id_study == "CHL_2010_ENS", "Chile"),
